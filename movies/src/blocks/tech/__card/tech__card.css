@@ -1,0 +1,38 @@
+.tech__card {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.56px;
+
+  background-color: #E8E8E8;
+  border-radius: 10px;
+  width: 90px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech__card:not(:last-child) {
+  margin-right: 10px;
+}
+
+@media (max-width:768px) {
+  .tech__card {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  
+    width: 84px;
+    height: 57px;
+  }
+}
+
+
+@media (max-width:550px) {
+  .tech__card:not(:last-child) {
+    margin-right: 0;
+  }
+}
+

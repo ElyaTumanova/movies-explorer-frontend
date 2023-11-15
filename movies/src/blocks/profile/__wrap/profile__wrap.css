@@ -1,0 +1,17 @@
+.profile__wrap {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  padding-top: 18px;
+}
+
+@media (max-width: 550px) {
+  .profile__wrap {
+    max-width: 260px;
+  }
+}
+
+.profile__wrap:not(:last-child) {
+  padding-bottom: 16px;
+  border-bottom: solid 1px #E8E8E8;
+}

@@ -1,0 +1,10 @@
+.search__shorts-wrap {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width:550px) {
+  .search__shorts-wrap {
+   margin-top: 46px;
+  } 
+ }

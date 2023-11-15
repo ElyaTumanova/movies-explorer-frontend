@@ -1,0 +1,26 @@
+.search__button {
+  min-width: 60px;
+  height: 34px;
+  border-radius: 48px;
+  background: #000;
+  border: none;
+
+  color: #FFF;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; 
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.search__button:hover {
+  background: #00000080;
+}
+
+@media (max-width:550px) {
+  .search__button {
+    grid-area: search;
+  }
+}

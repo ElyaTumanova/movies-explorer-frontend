@@ -1,0 +1,23 @@
+.menu-popup {
+  display: none;
+  visibility: hidden;
+  position: fixed;
+  top:0;
+  right: 0;
+  height: 100vh;
+  min-width: 522px;
+  background-color: #fff;
+}
+
+@media (max-width:768px) {
+  .menu-popup {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:550px) {
+  .menu-popup {
+    min-width: 100vw;
+  }
+}

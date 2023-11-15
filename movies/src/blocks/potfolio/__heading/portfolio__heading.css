@@ -1,0 +1,16 @@
+.portfolio__heading {
+  color: #A0A0A0;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+  margin-bottom: 50px;
+}
+
+@media (max-width:550px) {
+  .portfolio__heading {
+    font-size: 14px; 
+    margin-bottom: 40px;
+  }
+}

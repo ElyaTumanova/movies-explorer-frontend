@@ -1,0 +1,29 @@
+.page__button {
+  display: block;
+  border-radius: 3px;
+  border: none;
+  background: #000;
+  padding: 13px 0;
+  width: 100%;
+
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal; 
+  text-decoration: none;
+
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.page__button:hover {
+  background: #00000080;
+}
+
+@media (max-width:550px) {
+  .page__button {
+    font-size: 12px;
+  }
+}

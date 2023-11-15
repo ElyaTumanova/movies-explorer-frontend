@@ -1,0 +1,15 @@
+.search {
+  padding: 70px 0;
+}
+
+@media (max-width:768px) {
+  .search {
+    padding: 80px 0 70px;
+  }
+}
+
+@media (max-width:550px) {
+  .search {
+    padding: 61px 0 39px;
+  }
+}

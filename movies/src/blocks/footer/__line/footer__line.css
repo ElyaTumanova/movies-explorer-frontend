@@ -1,0 +1,13 @@
+.footer__line {
+  display: block;
+  height: 1px;
+  background: #E8E8E8; 
+  width: auto;
+  margin: 20px 0 20px;
+}
+
+@media (max-width:550px) {
+  .footer__line {
+    margin-bottom: 30px;
+  }
+}

@@ -1,0 +1,12 @@
+.profile__error-msg {
+  position: absolute;
+  bottom: 60px;
+  width: 410px;
+
+  text-align: center;
+  color: #FF004C;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

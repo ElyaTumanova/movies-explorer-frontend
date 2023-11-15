@@ -1,0 +1,14 @@
+.footer__copyright {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal; 
+}
+
+@media (max-width:550px) {
+  .footer__copyright {
+    order: 3;
+    padding-top: 19px;
+    font-size: 12px;
+  }
+}

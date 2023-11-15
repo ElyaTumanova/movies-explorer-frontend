@@ -1,0 +1,23 @@
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width:768px) {
+  .menu {
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 63px;
+    margin-bottom: 46px;
+  }
+}
+
+@media (max-width:550px) {
+  .menu {
+    margin-top: 51px;
+    margin-bottom: 24px;
+    min-width: 320px;
+  }
+}

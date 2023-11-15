@@ -1,0 +1,30 @@
+.student__wrap {
+  display: grid;
+  grid-template: repeat(2, auto) / repeat(2, auto);
+  grid-template-areas:
+  "bio photo"
+  "link photo";
+  /* column-gap: 270px; */
+  column-gap: 21%;
+  margin-bottom: 100px;
+}
+
+@media (max-width:768px) {
+  .student__wrap {
+    column-gap: 49px;
+    margin-bottom: 90px;
+  }
+}
+
+@media (max-width:550px) {
+  .student__wrap {
+    display: grid;
+    grid-template: repeat(3, auto) / auto;
+    grid-template-areas:
+    "photo"
+    "bio"
+    "link";
+    row-gap: 38px;
+    margin-bottom: 69px;
+  }
+}

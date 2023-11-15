@@ -1,0 +1,15 @@
+.tech__header {
+  margin-bottom: 90px;
+}
+
+@media (max-width:768px) {
+  .tech__header {
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width:550px) {
+  .tech__header {
+    margin-bottom: 60px;
+  }
+}

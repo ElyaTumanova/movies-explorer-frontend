@@ -1,0 +1,22 @@
+.student__text {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 0;
+}
+
+
+@media (max-width:768px) {
+  .student__text {
+    font-size: 12px;
+    line-height: 18px; 
+  }
+}
+
+@media (max-width:550px) {
+  .student__text {
+    font-size: 11px;
+    line-height: 16px; 
+  }
+}

@@ -1,0 +1,23 @@
+.menu-popup__close {
+  height: 24px;
+  width: 18px;
+  margin-top: 29px;
+  margin-right: 29px;
+  border: none;
+  align-self: flex-end;
+  background: no-repeat center url(../../../images/menu-popup__close.svg);
+}
+
+@media (max-width:768px) {
+  .menu-popup__close {
+    margin-top: 14px;
+    margin-right: 14px;
+  }
+}
+
+@media (max-width:550px) {
+  .menu-popup__close {
+    margin-top: 22px;
+    margin-right: 20px;
+  }
+}

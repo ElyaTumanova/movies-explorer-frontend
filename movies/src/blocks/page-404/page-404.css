@@ -1,0 +1,18 @@
+.page-404 {
+  padding-top: 167px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width:768px) {
+  .page-404 {
+    padding-top: 328px;
+  }
+}
+@media (max-width:550px) {
+  .page-404 {
+    padding-top: 248px;
+  }
+}

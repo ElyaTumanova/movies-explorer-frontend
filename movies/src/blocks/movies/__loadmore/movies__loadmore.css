@@ -1,0 +1,32 @@
+.movies__loadmore {
+  margin: 76px auto 80px;
+  display: block;
+  width: 320px;
+  border-radius: 6px;
+  background: #F9F9F9;
+  border: none;
+
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 10px;
+
+  cursor: pointer;
+}
+
+.movies__loadmore:hover {
+  background: #F9F9F980;
+}
+
+@media (max-width:768px) {
+  .movies__loadmore {
+    margin-top: 62px;
+  }
+}
+@media (max-width:550px) {
+  .movies__loadmore {
+    width: 240px;
+  }
+}

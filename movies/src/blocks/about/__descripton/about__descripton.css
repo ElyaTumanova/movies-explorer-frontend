@@ -1,0 +1,17 @@
+.about__descripton {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width:768px) {
+  .about__descripton {
+    column-gap: 30px;
+  }
+}
+
+@media (max-width:700px) {
+  .about__descripton {
+    flex-direction: column;
+    row-gap: 56px;
+  }
+}

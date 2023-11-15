@@ -1,0 +1,16 @@
+.portfolio__work {
+  display: flex;
+  justify-content: space-between;
+}
+
+.portfolio__work:not(:last-child) {
+  border-bottom: solid 1px #E8E8E8;
+  margin-bottom: 20px;
+  padding-bottom: 9px;
+}
+
+@media (max-width:550px) {
+  .portfolio__work:not(:last-child) {
+    padding-bottom: 19px;
+  }
+}

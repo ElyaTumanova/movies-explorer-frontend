@@ -1,0 +1,18 @@
+.movie__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 11px;
+}
+
+@media (max-width:768px) {
+  .movie__info {
+    margin-top: 22px;
+  }
+}
+
+@media (max-width:550px) {
+  .movie__info {
+    margin-top: 13px;
+  }
+}

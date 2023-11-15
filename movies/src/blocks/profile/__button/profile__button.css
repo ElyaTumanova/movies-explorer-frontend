@@ -1,0 +1,14 @@
+.profile__button {
+  background: none;
+  border: none;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  line-height: normal;
+}
+
+@media (max-width: 550px) {
+  .profile__button {
+    font-size: 12px;
+  }
+}

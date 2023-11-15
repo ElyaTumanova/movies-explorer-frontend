@@ -1,0 +1,10 @@
+.student__header {
+  margin-bottom: 66px;
+}
+
+@media (max-width:550px) {
+  .student__header {
+    margin-bottom: 61px;
+  }
+  
+}

@@ -1,0 +1,21 @@
+.page-404__back {
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;  
+  text-decoration: none;
+  margin-top: 184px;
+  cursor: pointer;
+}
+
+@media (max-width:550px) {
+  .page-404__back {
+    font-size: 12px;
+    margin-top: 285px;
+  }
+}
+
+.page-404__back:hover {
+  color: #00000080;
+}

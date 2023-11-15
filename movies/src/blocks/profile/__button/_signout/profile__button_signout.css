@@ -1,0 +1,9 @@
+.profile__button_signout {
+  font-weight: 500; 
+  color: #FF4062;
+  cursor: pointer;
+}
+
+.profile__button_signout:hover {
+  color: #FF406280;
+}

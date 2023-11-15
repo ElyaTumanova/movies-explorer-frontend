@@ -1,0 +1,12 @@
+.menu__profile-wrap {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+}
+
+
+@media (max-width:768px) {
+  .menu__profile-wrap {
+    margin-left: 0;
+  }
+}
