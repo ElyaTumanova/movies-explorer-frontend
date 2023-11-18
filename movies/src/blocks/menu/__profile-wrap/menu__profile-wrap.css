@@ -10,3 +10,8 @@
     margin-left: 0;
   }
 }
+
+.menu__profile-wrap:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

@@ -5,7 +5,7 @@ import {useLocation} from 'react-router-dom';
 
 
 function MoviesCard({movie}) {
-  console.log (movie)
+  // console.log (movie)
 
   const isSaved = false;
 
@@ -17,19 +17,19 @@ function MoviesCard({movie}) {
   }, [location])
 
   return (
-      <div className='movie'>
-        <img className="movie__cover" alt = "Cover" src = {Cover}/>
+      <li className='movie'>
+        <img className="movie__cover" alt = {movie.name} src = {Cover}/>
         { currentPage.pathname === '/movies'  ? 
-        <button className={`${isSaved ? 'movie__button_saved' : ''} movie__button`}> {`${ isSaved ? '' : 'Сохранить'}`}</button> 
+        <button className={`${isSaved ? 'movie__button_saved' : ''} movie__button`}  type='button'> {`${ isSaved ? '' : 'Сохранить'}`}</button> 
         : ''}
         { currentPage.pathname === '/saved-movies'  ? 
-        <button className='movie__button_remove movie__button'></button> 
+        <button className='movie__button_remove movie__button' type='button'></button> 
         : ''}
         <div className="movie__info">
-          <p className="movie__name">{movie.name}</p>
+          <h2 className="movie__name">{movie.name}</h2>
           <div className="movie__duration">{movie.duration}</div>
         </div>
-      </div>
+      </li>
   );
 }
 

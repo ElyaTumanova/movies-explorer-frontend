@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 function ProfileInfo({isOpen}) {
   return (
@@ -14,8 +15,8 @@ function ProfileInfo({isOpen}) {
         </div>
       </div>
       <div className="profile__buttons">
-        <button className="profile__button profile__button_edit">Редактировать</button>
-        <button className="profile__button profile__button_signout">Выйти из аккаунта</button>
+        <button className="profile__button profile__button_edit" type="button">Редактировать</button>
+        <Link className="profile__button profile__button_signout" to='/'>Выйти из аккаунта</Link>
       </div>
     </section>
   );

@@ -4,3 +4,7 @@
 
   background: url(../../../images/header__logo.svg);
 }
+
+.header__logo:hover {
+  opacity: 0.7;
+}

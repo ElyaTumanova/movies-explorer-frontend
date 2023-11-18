@@ -9,22 +9,22 @@ function SearchForm({isShortsSearch}) {
         <form action="" className="search__form" name='searchForm'>
           <div className="search__wrap">
             <div className="search__input-wrap">
-              <img src={SearchIcon} alt="Search" className="search__icon" />
+              <div className="search__icon"></div>
+              {/* <img src={SearchIcon} alt="Search" className="search__icon" /> */}
               <input 
               placeholder='Фильм'
               name="search"
               type="text" 
               className="search__input" 
+              required
               noValidate/>
-              <button className="search__button">Найти</button>
+              <button className="search__button" type="button">Найти</button>
             </div>
             <div className="search__shorts-wrap">
-              <div className="search__line"></div>
               <FilterCheckbox isShortsSearch = {isShortsSearch}/>
               <a href="" className="search__shorts-link">Короткометражки</a>
             </div>
           </div>
-          <div className="search__divider"></div>
         </form>
       </section>
   );

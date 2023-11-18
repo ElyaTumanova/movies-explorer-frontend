@@ -3,25 +3,24 @@ import React from 'react';
 function ProfileEdit({isOpen}) {
   return (
     <section className={`${!isOpen ? 'page__hidden-section':''}`}>
-      <form className="profile__info">
+      <form className="profile__info" id="profile__info">
         <div className="profile__wrap">
-          <div className="profile__label">Имя</div>
+          <label className="profile__label">Имя</label>
           <input 
             type="text"
             name="name" 
-            className= "profile__value"
+            className= "profile__value profile__value_edit"
             minLength="2" maxLength="40" 
             required 
-            noValidate
             placeholder='Имя'
           ></input>
         </div>
         <div className="profile__wrap">
-          <div className="profile__label">E-mail</div>
+          <label className="profile__label">E-mail</label>
           <input
             type="text"
             name="name" 
-            className= "profile__value"
+            className= "profile__value profile__value_edit"
             required 
             noValidate
             placeholder='E-mail'
@@ -29,7 +28,7 @@ function ProfileEdit({isOpen}) {
         </div>
       </form>
       <div className="profile__error-msg">При обновлении профиля произошла ошибка.</div>
-      <button className="page__button">Сохранить</button>
+      <button className="page__button" type='submit' form="profile__info">Сохранить</button>
     </section>
 
   );

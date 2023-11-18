@@ -12,7 +12,7 @@ function AboutMe (){
           <p className="student__text">Я фронтенд-разработчик из Москвы. Долгое время работаю в консалтинге, но всегда увлекалась программированием. Обучалась также дизайну веб-интерфейсов, но решила попробовать себя в разработке. Мои сильные стороны — аналитический склад ума, структурированный подход и критический взгляд на вещи.</p>
         </div>
         <a href="https://github.com/ElyaTumanova" className="student__link" target="_blank">Github</a>
-        <img src={Photo} alt="" className="student__photo" />
+        <img src={Photo} alt="Фото студента" className="student__photo" />
       </div>
     </section>
   );

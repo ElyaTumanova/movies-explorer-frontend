@@ -1,6 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
-import { Routes, Route  } from 'react-router-dom';
+import { useState,useEffect } from 'react';
+import { Routes, Route, useLocation  } from 'react-router-dom';
+
+import { useMyLocation } from '../hooks/useMyLocation.js';
 
 import Header from './Header';
 import Main from './Main';
@@ -13,43 +15,56 @@ import PageNotFound from './PageNotFound';
 import MenuMobPopup from './MenuMobPopup';
 
 import {testMovies, testMoviesSaved} from '../utils/testdata.js'
+import {headerPathsArray, footerPathsArray} from '../utils/constants.js' // пути, где применяются хедер и футер
 
 
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState (true);
-  const [isProfileEditOpen, setIsProfileEditOpen] = useState (true);
-  const [isMobMenuOpen, setMobMenuOpen] = useState (true);
+  const [isProfileEditOpen, setIsProfileEditOpen] = useState (false);
+  const [isMobMenuOpen, setMobMenuOpen] = useState (false);
   const [shortsCheckbox, setShortsCheckbox] = useState (false);
-  const [movies, setMovies] = useState (testMovies)
-  const [savedMovies, setSavedMovies] = useState (testMoviesSaved)
+  const [movies, setMovies] = useState (testMovies);
+  const [savedMovies, setSavedMovies] = useState (testMoviesSaved);
 
+  const currentPage = useMyLocation();
+  
+  function handleMenuMobOpen () {
+    setMobMenuOpen (true)
+  };
+
+  function handleMenuMobClose () {
+    setMobMenuOpen (false)
+  };
+  
   return (
     <div className="App">
       <div className="page">
-        <Header 
-        isLoggedIn = {isLoggedIn}
-        />
+        {headerPathsArray.indexOf(currentPage.pathname) >= 0 && <Header
+          isLoggedIn = {isLoggedIn}
+          onClick = {handleMenuMobOpen}/>}
         <Routes>
           <Route path="*" element={<PageNotFound/>}/>
           <Route path="/" element={<Main />} />
           <Route path="/movies" element={<Movies 
-          isShortsSearch = {shortsCheckbox}
-          movies = {movies}
+            isShortsSearch = {shortsCheckbox}
+            movies = {movies}
           />} />
           <Route path="/saved-movies" element={<Movies
           isShortsSearch = {shortsCheckbox}
           movies = {savedMovies}
           />} />
           <Route path="/profile" element={<Profile
-          isOpen={isProfileEditOpen}/>}/>
+            isOpen={isProfileEditOpen}
+          />}/>
           <Route path="/signin" element={<Login/>}/>
           <Route path="/signup" element={<Register/>}/>
         </Routes>
-        <Footer/>
+        {footerPathsArray.indexOf(currentPage.pathname) >= 0 && <Footer/>}
         <MenuMobPopup
-        isLoggedIn = {isLoggedIn}
-        isOpen={isMobMenuOpen}
+          isLoggedIn = {isLoggedIn}
+          isOpen={isMobMenuOpen}
+          onClick={handleMenuMobClose}
         />
       </div>
     </div>

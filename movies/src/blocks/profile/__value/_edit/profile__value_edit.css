@@ -1,0 +1,11 @@
+.profile__value_edit
+{
+  cursor: pointer;
+  border-radius: 5px;
+  width: 70%;
+}
+
+.profile__value_edit:focus {
+  outline: 1px solid #000;
+  outline-offset: 3px;
+}

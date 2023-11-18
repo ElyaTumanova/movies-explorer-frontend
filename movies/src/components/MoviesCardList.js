@@ -3,15 +3,15 @@ import MoviesCard from './MoviesCard'
 
 
 function MoviesCardList({movies}) {
-  console.log (movies)
+  // console.log (movies)
   return (
-    <section className="movies">
+    <ul className="movies">
       {movies.map (movie =>
         (<MoviesCard movie = {movie}
           key={movie._id}
         />)
     )}
-  </section>
+  </ul>
   );
 }
 

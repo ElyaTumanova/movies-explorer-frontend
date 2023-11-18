@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Navigation from './Navigation.js'
 
 
-function Header({isLoggedIn}) {
+function Header({isLoggedIn, onClick}) {
   const [currentPage, setCurrentPage] = useState('');
   const location = useLocation();
 
@@ -16,7 +16,7 @@ function Header({isLoggedIn}) {
 
   return (
     <header className={`header page__padding 
-    ${currentPage.pathname === '/' ? 'header_colored-backgroung' : ''} ${currentPage.pathname === '/signup' || currentPage.pathname === '/signin' ? 'page__hidden-section' : ''}`}>
+    ${currentPage.pathname === '/' ? 'header_colored-backgroung' : ''}`}>
         <div className='header__content'>
           <Link to='/'><div className='header__logo'></div></Link>
           <div className="header__nav-wrap">
@@ -24,7 +24,11 @@ function Header({isLoggedIn}) {
             isLoggedIn = {isLoggedIn}
             />
           </div>
-          <button className="header__burger"></button>
+          <div className={`${!isLoggedIn ? '' : 'page__hidden-section'}`}>
+            <Link className="header__registration-link" to='/signup'>Регистрация</Link>
+            <Link className="header__login-btn" to='/signin'>Войти</Link>
+          </div>
+          <button className={`header__burger ${isLoggedIn ? '' : 'page__hidden-section'}`} onClick = {onClick} type='button'></button>
         </div>
       </header>
   );

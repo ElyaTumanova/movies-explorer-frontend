@@ -1,6 +1,6 @@
 .profile__error-msg {
   position: absolute;
-  bottom: 60px;
+  bottom: 80px;
   width: 410px;
 
   text-align: center;
@@ -9,4 +9,10 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media (max-width:550px) {
+  .profile__error-msg {
+    max-width: 260px;
+  }
 }

@@ -4,7 +4,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
-  text-decoration: none;
+  
   cursor: pointer;
 }
 
@@ -31,5 +31,9 @@
 }
 
 .navigation__item:hover {
-  color: #ffffff80;
+  opacity: 0.7;
+}
+
+.navigation__item:after:hover {
+  opacity: 0.7;
 }

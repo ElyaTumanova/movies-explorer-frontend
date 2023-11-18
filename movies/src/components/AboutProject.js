@@ -15,10 +15,10 @@ function AboutProject (){
         </div>
       </div>
       <div className="about__timing">
-        <div className="about__timing-item about__timing-item_black">1 неделя</div>
-        <div className="about__timing-item about__timing-item_grey">4 недели</div>
-        <div className="about__timing-item about__timing-item_white">Back-end</div>
-        <div className="about__timing-item about__timing-item_white">Front-end</div>
+        <p className="about__timing-item about__timing-item_black">1 неделя</p>
+        <p className="about__timing-item about__timing-item_grey">4 недели</p>
+        <p className="about__timing-item about__timing-item_white">Back-end</p>
+        <p className="about__timing-item about__timing-item_white">Front-end</p>
       </div>
     </section>
   );

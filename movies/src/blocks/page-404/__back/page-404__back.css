@@ -17,5 +17,5 @@
 }
 
 .page-404__back:hover {
-  color: #00000080;
+  opacity: 0.7;
 }

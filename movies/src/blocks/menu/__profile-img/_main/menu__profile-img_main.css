@@ -1,9 +1,9 @@
-.header__profile-img_main {
+.menu__profile-img_main {
   background: no-repeat center url(../../../../images/header__profile.svg);
 }
 
 @media (max-width:768px) {
-  .header__profile-img_main {
+  .menu__profile-img_main {
     background: no-repeat center url(../../../../images/header__profile_light.svg);
   }
 }

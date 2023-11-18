@@ -1,16 +1,10 @@
 .portfolio__work {
   display: flex;
   justify-content: space-between;
+  text-decoration: none;
+  color: #000;
 }
 
-.portfolio__work:not(:last-child) {
-  border-bottom: solid 1px #E8E8E8;
-  margin-bottom: 20px;
-  padding-bottom: 9px;
-}
-
-@media (max-width:550px) {
-  .portfolio__work:not(:last-child) {
-    padding-bottom: 19px;
-  }
+.portfolio__work:hover {
+  opacity: 0.7;
 }

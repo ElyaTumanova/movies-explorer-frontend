@@ -6,11 +6,11 @@ import Logo from '../images/header__logo.svg'
 function Login () {
 
   return (
-    <section className="auth">
-      <img src={Logo} alt="Logo" className='header__logo header__logo_centered' />
-      <div className="auth__heading">Рады видеть!</div>
-      <form action="" className="auth__form">
-        <div className="auth__label">E-mail</div>
+    <main className="auth">
+      <Link to='/'><div className='header__logo header__logo_centered'></div></Link>
+      <h1 className="auth__heading">Рады видеть!</h1>
+      <form action="" className="auth__form" id="login__form">
+        <label className="auth__label">E-mail</label>
         <input type="text"
             name="email" 
             className= "auth__input"
@@ -18,18 +18,18 @@ function Login () {
             required 
             noValidate
         />
-        <div className="auth__label">Пароль</div>
+        <label className="auth__label">Пароль</label>
         <input type="password"
             name="password" 
             className= "auth__input auth__input_error"
             placeholder='Пароль'
+            minLength="8"
             required 
-            noValidate
         />
       </form>
-      <Link className="page__button" to='/signin'>Войти</Link>
+      <button className="page__button" type='submit' form="login__form">Войти</button>
       <div className="auth__login-caption">Ещё не зарегистрированы? <Link className="auth__login-link"to="/signup">Регистрация</Link></div>
-    </section>
+    </main>
   );
 }
 

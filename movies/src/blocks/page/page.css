@@ -1,4 +1,6 @@
 .page {
+  display: flex;
+  flex-direction: column;
   background-color: #FFF;
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   color: #000;

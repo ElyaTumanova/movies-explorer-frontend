@@ -1,0 +1,11 @@
+.portfolio__row:not(:last-of-type) {
+  border-bottom: solid 1px #E8E8E8;
+  margin-bottom: 20px;
+  padding-bottom: 9px;
+}
+
+@media (max-width:550px) {
+  .portfolio__row:not(:last-child) {
+    padding-bottom: 19px;
+  }
+}

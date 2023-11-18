@@ -2,6 +2,7 @@
   width: 34px;
   height: 34px;
   margin-left: 19px;
+  background-image: url(../../../images/search__icon.svg);
 }
 
 @media (max-width:550px) {

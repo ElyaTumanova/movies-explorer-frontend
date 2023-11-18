@@ -15,3 +15,7 @@
 .auth__input:last-of-type {
   margin-bottom: 10px;
 }
+
+.auth__input:focus {
+  outline: 1px solid #000;
+}

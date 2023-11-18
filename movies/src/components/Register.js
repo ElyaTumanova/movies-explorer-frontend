@@ -6,20 +6,19 @@ import Logo from '../images/header__logo.svg'
 function Register () {
 
   return (
-    <section className="auth">
-      <img src={Logo} alt="Logo" className='header__logo header__logo_centered' />
-      <div className="auth__heading">Добро пожаловать!</div>
-      <form action="" className="auth__form">
-        <div className="auth__label">Имя</div>
+    <main className="auth">
+      <Link to='/'><div className='header__logo header__logo_centered'></div></Link>
+      <h1 className="auth__heading">Добро пожаловать!</h1>
+      <form action="" className="auth__form" id="register__form">
+        <label className="auth__label">Имя</label>
         <input type="text"
             name="name" 
             className= "auth__input"
             minLength="2" maxLength="40" 
             required
             placeholder='Имя' 
-            noValidate
         />
-        <div className="auth__label">E-mail</div>
+        <label className="auth__label">E-mail</label>
         <input type="text"
             name="email" 
             className= "auth__input"
@@ -27,19 +26,19 @@ function Register () {
             required 
             noValidate
         />
-        <div className="auth__label">Пароль</div>
+        <label className="auth__label">Пароль</label>
         <input type="password"
             name="password" 
             className= "auth__input auth__input_error"
             placeholder='Пароль'
+            minLength="8"
             required 
-            noValidate
         />
         <div className="auth__error-msg">Что-то пошло не так...</div>
       </form>
-      <Link className="page__button" to="/signup">Зарегистрироваться</Link>
+      <button className="page__button" type='submit' form="register__form">Зарегистрироваться</button>
       <div className="auth__login-caption">Уже зарегистрированы? <Link className="auth__login-link"to="/signin">Войти</Link></div>
-    </section>
+    </main>
   );
 }
 

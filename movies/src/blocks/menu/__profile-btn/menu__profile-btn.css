@@ -12,6 +12,5 @@
 }
 
 .menu__profile-btn:hover {
-  color: #00000080;
-  cursor: pointer;
+  /* opacity: 0.7; */
 }

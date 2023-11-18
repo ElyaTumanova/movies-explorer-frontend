@@ -1,9 +1,12 @@
-.menu__registration-link {
-  color: #000;
+.header__login-btn {
+  color: #FFF;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
   text-decoration: none;
-  margin-right: 30px;
+
+  background-color: #000;
+  padding: 8px 20px;
+  border-radius: 3px;
 }

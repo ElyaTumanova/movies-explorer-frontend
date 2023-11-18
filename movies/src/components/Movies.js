@@ -9,7 +9,7 @@ function Movies({isShortsSearch, movies}) {
         <SearchForm isShortsSearch={isShortsSearch}/>
         <MoviesCardList
         movies = {movies}/>
-        <button className="movies__loadmore">Ещё</button>
+        <button className="movies__loadmore" type='button'>Ещё</button>
       </main>
   );
 }

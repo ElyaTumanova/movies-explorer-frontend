@@ -17,5 +17,5 @@
 }
 
 .student__link:hover {
-  color: #00000080;
+  opacity: 0.7;
 }

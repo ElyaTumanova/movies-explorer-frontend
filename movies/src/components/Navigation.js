@@ -15,7 +15,7 @@ function Navigation({isLoggedIn}) {
 
   return (
     <section className='menu'>
-      <div className={`menu ${isLoggedIn ? '' : 'page__hidden-section'}`}>
+      <nav className={`menu ${isLoggedIn ? '' : 'page__hidden-section'}`}>
         <ul className="menu__wrap">
           <li><NavLink  
           className={({ isActive, isPending, isTransitioning }) =>
@@ -50,14 +50,10 @@ function Navigation({isLoggedIn}) {
         </ul>
         <div className="menu__profile-wrap">
           <Link className="menu__profile-btn" to='/profile'>Аккаунт</Link>
-          <div className={`header__profile-img ${currentPage.pathname === '/'? 'header__profile-img_main' : 'header__profile-img_other'}`}></div>
+          <div className={`menu__profile-img ${currentPage.pathname === '/'? 'menu__profile-img_main' : 'menu__profile-img_other'}`}></div>
         </div>
-      </div>
-      <div className={`menu ${!isLoggedIn ? '' : 'page__hidden-section'}`}>
-        <Link className="menu__registration-link" to='/signup'>Регистрация</Link>
-        <Link className="menu__login-btn" to='/signin'>Войти</Link>
-      </div>
-      </section>
+      </nav>
+    </section>
   );
 }
 
