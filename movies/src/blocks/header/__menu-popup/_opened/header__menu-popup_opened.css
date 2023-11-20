@@ -1,0 +1,9 @@
+.header__menu-popup_opened {
+  visibility: hidden;
+}
+
+@media (max-width:768px) {
+  .header__menu-popup_opened {
+    visibility: visible;
+  }
+}

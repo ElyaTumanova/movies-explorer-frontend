@@ -2,13 +2,15 @@ import React from 'react';
 
 import Navigation from './Navigation';
 
-function MenuMobPopup ({isLoggedIn, isOpen, onClick}) {
+function MenuMobPopup ({isLoggedIn, isOpen, onClickMobClose}) {
   return (
-    <section className={`menu-popup ${isOpen ? 'menu-popup_opened' : ''}`}>
-      <button className="menu-popup__close" onClick={onClick} type='button'></button>
-      <Navigation
-      isLoggedIn = {isLoggedIn}
-      />
+    <section className={`header__menu-popup ${isOpen ? 'header__menu-popup_opened' : ''}`}>
+      <div className="header__menu-popup-wrap">
+        <button className="header__menu-popup-close" onClick={onClickMobClose} type='button'></button>
+        <Navigation
+        isLoggedIn = {isLoggedIn}
+        />
+      </div>
     </section>
   );
 }

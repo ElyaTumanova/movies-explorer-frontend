@@ -1,9 +1,0 @@
-.menu__profile-img_main {
-  background: no-repeat center url(../../../../images/header__profile.svg);
-}
-
-@media (max-width:768px) {
-  .menu__profile-img_main {
-    background: no-repeat center url(../../../../images/header__profile_light.svg);
-  }
-}

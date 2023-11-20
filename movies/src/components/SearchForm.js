@@ -6,18 +6,16 @@ import FilterCheckbox from './FilterCheckbox'
 function SearchForm({isShortsSearch}) {
   return (
       <section className='search page__section-width page__section-width_movies'>
-        <form action="" className="search__form" name='searchForm'>
+        <form className="search__form" name='searchForm'>
           <div className="search__wrap">
             <div className="search__input-wrap">
               <div className="search__icon"></div>
-              {/* <img src={SearchIcon} alt="Search" className="search__icon" /> */}
               <input 
               placeholder='Фильм'
               name="search"
               type="text" 
               className="search__input" 
-              required
-              noValidate/>
+              required/>
               <button className="search__button" type="button">Найти</button>
             </div>
             <div className="search__shorts-wrap">

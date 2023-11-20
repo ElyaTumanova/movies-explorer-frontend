@@ -22,7 +22,6 @@ function ProfileEdit({isOpen}) {
             name="name" 
             className= "profile__value profile__value_edit"
             required 
-            noValidate
             placeholder='E-mail'
           ></input>
         </div>

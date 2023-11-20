@@ -1,33 +1,36 @@
 import React from 'react';
-import Cover from '../images/movie__test-cover.png'
-import { useEffect,useState } from 'react';
-import {useLocation} from 'react-router-dom';
+
+import {moviesUrl} from '../utils/constants.js'
+import { useMyLocation } from '../hooks/useMyLocation.js';
 
 
 function MoviesCard({movie}) {
-  // console.log (movie)
-
+  const currentPage = useMyLocation();
   const isSaved = false;
 
-  const [currentPage, setCurrentPage] = useState('');
-  const location = useLocation();
+  const movieDuration = movie.duration;
+  const movieHours = Math.floor(movieDuration / 60);
+  const movieMinutes = movieDuration - movieHours*60;
+  
 
-  useEffect(()=>{
-    setCurrentPage (location)
-  }, [location])
 
   return (
       <li className='movie'>
-        <img className="movie__cover" alt = {movie.name} src = {Cover}/>
-        { currentPage.pathname === '/movies'  ? 
-        <button className={`${isSaved ? 'movie__button_saved' : ''} movie__button`}  type='button'> {`${ isSaved ? '' : 'Сохранить'}`}</button> 
-        : ''}
-        { currentPage.pathname === '/saved-movies'  ? 
-        <button className='movie__button_remove movie__button' type='button'></button> 
-        : ''}
+        <img className="movie__cover" alt = {movie.nameRU} src = {`${moviesUrl}/${movie.image.formats.thumbnail.url}`}/>
+        { 
+          currentPage.pathname === '/movies'  ? 
+          <button className={`${isSaved ? 'movie__button_saved' : ''} movie__button`}  type='button'> 
+          {`${ isSaved ? '' : 'Сохранить'}`}</button> 
+          : ''
+        }
+        { 
+          currentPage.pathname === '/saved-movies'  ? 
+          <button className='movie__button_remove movie__button' type='button'></button> 
+          : ''
+        }
         <div className="movie__info">
-          <h2 className="movie__name">{movie.name}</h2>
-          <div className="movie__duration">{movie.duration}</div>
+          <h2 className="movie__name">{movie.nameRU}</h2>
+          <div className="movie__duration">{`${movieHours}ч ${movieMinutes}м`}</div>
         </div>
       </li>
   );

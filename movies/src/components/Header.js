@@ -4,9 +4,10 @@ import {useLocation} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import Navigation from './Navigation.js'
+import MenuMobPopup from './MenuMobPopup';
 
 
-function Header({isLoggedIn, onClick}) {
+function Header({isLoggedIn, isOpen, onClickMobOpen, onClickMobClose}) {
   const [currentPage, setCurrentPage] = useState('');
   const location = useLocation();
 
@@ -28,8 +29,15 @@ function Header({isLoggedIn, onClick}) {
             <Link className="header__registration-link" to='/signup'>Регистрация</Link>
             <Link className="header__login-btn" to='/signin'>Войти</Link>
           </div>
-          <button className={`header__burger ${isLoggedIn ? '' : 'page__hidden-section'}`} onClick = {onClick} type='button'></button>
+          <button className={`header__burger ${isLoggedIn ? '' : 'page__hidden-section'}`} onClick = {onClickMobOpen} type='button'></button>
         </div>
+
+        <MenuMobPopup
+          isLoggedIn = {isLoggedIn}
+          isOpen={isOpen}
+          onClickMobClose={onClickMobClose}
+        />
+
       </header>
   );
 }

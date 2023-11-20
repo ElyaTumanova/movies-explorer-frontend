@@ -1,3 +1,19 @@
 .movie__cover {
   width: 100%;
+  object-fit: cover;
+  max-height: 201px;
+  aspect-ratio: 1/1;
+  border-radius: 6px;
+}
+
+@media (max-width:768px) {
+  .movie__cover {
+    max-height: 190px;
+  }
+}
+
+@media (max-width:550px) {
+  .movie__cover {
+    max-height: 168px;
+  }
 }

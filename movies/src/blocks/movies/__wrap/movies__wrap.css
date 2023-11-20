@@ -1,0 +1,25 @@
+.movies__wrap {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(284px, 1fr));
+  column-gap: 30px;
+  row-gap: 59px;
+  justify-content: center;
+  max-width: 1140px;
+  margin: auto;
+}
+
+@media (max-width:768px) {
+  .movies__wrap {
+    max-width: 708px;
+    row-gap: 47px;
+  }
+}
+
+@media (max-width:550px) {
+  .movies__wrap {
+    column-gap: 10px;
+    row-gap: 38px;
+  }
+}

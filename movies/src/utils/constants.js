@@ -11,4 +11,6 @@ const footerPathsArray = [
   '/saved-movies',
 ]
 
-export {headerPathsArray, footerPathsArray}
+const moviesUrl = 'https://api.nomoreparties.co'
+
+export {headerPathsArray, footerPathsArray, moviesUrl}

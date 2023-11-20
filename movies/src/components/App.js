@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation  } from 'react-router-dom';
 
 import { useMyLocation } from '../hooks/useMyLocation.js';
@@ -14,6 +14,8 @@ import Register from './Register';
 import PageNotFound from './PageNotFound';
 import MenuMobPopup from './MenuMobPopup';
 
+import {moviesApi} from '../utils/MoviesApi.js'
+
 import {testMovies, testMoviesSaved} from '../utils/testdata.js'
 import {headerPathsArray, footerPathsArray} from '../utils/constants.js' // пути, где применяются хедер и футер
 
@@ -24,11 +26,11 @@ function App() {
   const [isProfileEditOpen, setIsProfileEditOpen] = useState (false);
   const [isMobMenuOpen, setMobMenuOpen] = useState (false);
   const [shortsCheckbox, setShortsCheckbox] = useState (false);
-  const [movies, setMovies] = useState (testMovies);
+  const [movies, setMovies] = useState ([]);
   const [savedMovies, setSavedMovies] = useState (testMoviesSaved);
 
   const currentPage = useMyLocation();
-  
+
   function handleMenuMobOpen () {
     setMobMenuOpen (true)
   };
@@ -36,13 +38,24 @@ function App() {
   function handleMenuMobClose () {
     setMobMenuOpen (false)
   };
-  
+
+  useEffect (()=>{  
+    moviesApi.getMovies()
+    .then (function (res) {
+      // console.log(res);
+      setMovies(res);
+    })
+    .catch((err)=>console.log (`catch:${err}`));
+  }, [])
+
   return (
     <div className="App">
       <div className="page">
         {headerPathsArray.indexOf(currentPage.pathname) >= 0 && <Header
           isLoggedIn = {isLoggedIn}
-          onClick = {handleMenuMobOpen}/>}
+          isOpen={isMobMenuOpen}
+          onClickMobClose={handleMenuMobClose}
+          onClickMobOpen = {handleMenuMobOpen}/>}
         <Routes>
           <Route path="*" element={<PageNotFound/>}/>
           <Route path="/" element={<Main />} />
@@ -61,11 +74,6 @@ function App() {
           <Route path="/signup" element={<Register/>}/>
         </Routes>
         {footerPathsArray.indexOf(currentPage.pathname) >= 0 && <Footer/>}
-        <MenuMobPopup
-          isLoggedIn = {isLoggedIn}
-          isOpen={isMobMenuOpen}
-          onClick={handleMenuMobClose}
-        />
       </div>
     </div>
   );

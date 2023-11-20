@@ -6,10 +6,10 @@ import Logo from '../images/header__logo.svg'
 function Register () {
 
   return (
-    <main className="auth">
+    <main className="auth header">
       <Link to='/'><div className='header__logo header__logo_centered'></div></Link>
       <h1 className="auth__heading">Добро пожаловать!</h1>
-      <form action="" className="auth__form" id="register__form">
+      <form className="auth__form" id="register__form">
         <label className="auth__label">Имя</label>
         <input type="text"
             name="name" 
@@ -24,7 +24,6 @@ function Register () {
             className= "auth__input"
             placeholder='E-mail'
             required 
-            noValidate
         />
         <label className="auth__label">Пароль</label>
         <input type="password"
@@ -32,6 +31,7 @@ function Register () {
             className= "auth__input auth__input_error"
             placeholder='Пароль'
             minLength="8"
+            maxLength="8"
             required 
         />
         <div className="auth__error-msg">Что-то пошло не так...</div>
