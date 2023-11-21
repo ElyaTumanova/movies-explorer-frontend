@@ -1,0 +1,37 @@
+.header__menu-item {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: fit-content;
+  text-decoration: none;
+  color:inherit;
+  position: relative;
+
+  cursor: pointer;
+}
+
+.header__menu-item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.header__menu-item:hover{
+  opacity: 0.7;
+}
+
+
+@media (max-width:768px) {
+  .header__menu-item {
+    text-align: center;
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .header__menu-item:not(:last-child) {
+    margin-right: 0;
+  }
+}

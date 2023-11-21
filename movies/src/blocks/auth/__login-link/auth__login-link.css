@@ -1,0 +1,21 @@
+.auth__login-link {
+  text-align: center;
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;  
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+@media (max-width:550px) {
+  .auth__login-link {
+    font-size: 12px;
+  }
+}
+
+.auth__login-link:hover{
+  opacity: 0.7;
+}

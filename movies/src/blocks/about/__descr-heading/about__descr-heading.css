@@ -1,0 +1,22 @@
+.about__descr-heading {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+  margin: 0 0 28px;
+}
+
+@media (max-width:768px) {
+  .about__descr-heading {
+    margin-bottom: 23px;
+  }
+}
+
+@media (max-width:550px) {
+  .about__descr-heading {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    margin: 0 0 16px;
+  }
+}

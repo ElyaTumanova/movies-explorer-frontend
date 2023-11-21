@@ -1,0 +1,22 @@
+.header__menu-wrap {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  list-style-type: none;
+  column-gap: 20px;
+}
+
+@media (max-width:768px) {
+  .header__menu-wrap {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    row-gap: 28px;
+  }
+}
+
+@media (max-width:550px) {
+  .header__menu-wrap {
+    row-gap: 25px;
+  }
+}

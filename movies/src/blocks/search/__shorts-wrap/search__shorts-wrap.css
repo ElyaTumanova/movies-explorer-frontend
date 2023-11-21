@@ -1,0 +1,24 @@
+.search__shorts-wrap {
+  display: flex;
+  align-items: center;
+  margin-left: 19px;
+  padding-left: 31px;
+  border-left: solid 1px #CBCBCB;
+  height: 40px;
+}
+
+@media (max-width:768px) {
+  .search__shorts-wrap {
+    padding-left: 22px;
+  } 
+ }
+
+@media (max-width:550px) {
+  .search__shorts-wrap {
+   margin-top: 46px;
+   height: auto;
+   border: none;
+   margin-left: 0;
+   padding-left: 0;
+  } 
+ }

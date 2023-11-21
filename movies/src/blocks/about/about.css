@@ -1,0 +1,29 @@
+.about {
+  padding-bottom: 110px;
+}
+
+@media (max-width:768px) {
+  .about {
+    padding-bottom: 90px;
+  }
+}
+
+@media (max-width:550px) {
+  .about {
+    padding-bottom: 70px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

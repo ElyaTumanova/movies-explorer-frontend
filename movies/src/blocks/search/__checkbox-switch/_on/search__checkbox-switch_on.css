@@ -1,0 +1,7 @@
+.search__checkbox-switch_on , .search__checkbox-switch_on:before {
+  background: #2BE080;
+}
+  
+.search__checkbox-switch_on:after{
+left: 21px;
+}

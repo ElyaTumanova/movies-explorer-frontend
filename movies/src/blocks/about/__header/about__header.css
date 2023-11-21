@@ -1,0 +1,9 @@
+.about__header {
+  margin-bottom: 70px;
+}
+
+@media (max-width:550px) {
+  .about__header {
+    margin-bottom: 61px;
+  }
+}

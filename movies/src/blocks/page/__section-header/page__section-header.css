@@ -1,0 +1,27 @@
+.page__section-header {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  margin-top: 0;
+}
+
+.page__section-header:after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: #000; 
+  width: auto;
+  margin: 23px 0 0;
+}
+
+@media (max-width:550px) {
+  .page__section-header {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+  .page__section-header:after {
+    margin: 28px 0 0;
+  }
+}

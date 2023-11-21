@@ -1,0 +1,14 @@
+.auth__login-caption {
+  color: #A0A0A0;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;  
+}
+
+@media (max-width:550px) {
+  .auth__login-caption {
+    font-size: 12px;
+  }
+}

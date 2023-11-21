@@ -1,0 +1,18 @@
+.about__timing-item {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  height: 100%;
+}
+
+
+@media (max-width:550px) {
+  .about__timing-item {
+    font-size: 11px;
+  }
+}

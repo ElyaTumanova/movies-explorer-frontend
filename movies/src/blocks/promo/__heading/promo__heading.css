@@ -1,0 +1,27 @@
+.promo__heading {
+  margin: 0;
+  text-align: center;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+  max-width: 730px;
+  margin-top: 184px;
+}
+
+@media (max-width:768px) {
+  .promo__heading {
+    margin-top: 326px;
+  }
+}
+
+@media (max-width:550px) {
+  .promo__heading {
+    margin-top: 206px;
+    font-size: 31px;
+    line-height: 39px;
+    letter-spacing: -1.24px;
+    min-width: 300px;
+  }
+}

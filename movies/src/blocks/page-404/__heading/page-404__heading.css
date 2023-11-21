@@ -1,0 +1,14 @@
+.page-404__heading {
+  font-size: 140px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 4px 0 5px;
+}
+
+@media (max-width:550px) {
+  .page-404__heading {
+    font-size: 80px;
+    margin: 7px 0 10px;
+  }
+}

@@ -1,0 +1,20 @@
+.movie__name {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  margin-left: 14px;
+}
+
+@media (max-width:768px) {
+  .movie__name {
+    margin-left: 0;
+  }
+}
+
+@media (max-width:550px) {
+  .movie__name {
+    font-size: 12px;
+  }
+}

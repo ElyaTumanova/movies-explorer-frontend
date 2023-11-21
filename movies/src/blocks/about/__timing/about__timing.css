@@ -1,0 +1,21 @@
+.about__timing {
+  display: grid;
+  grid-template: 36px 32px / 1fr 4fr;
+  margin-top: 110px;
+}
+
+@media (max-width:768px) {
+  .about__timing {
+    display: grid;
+    grid-template: 36px 32px / 1fr 4fr;
+    margin-top: 92px;
+  }
+}
+
+@media (max-width:550px) {
+  .about__timing {
+    display: grid;
+    grid-template: 35px 23px / 1fr 2fr;
+    margin-top: 61px;
+  }
+}

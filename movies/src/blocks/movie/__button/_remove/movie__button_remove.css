@@ -1,0 +1,5 @@
+.movie__button_remove {
+  background: no-repeat center url(../../../../images/movie__close-btn.svg) #fff;
+  width: 21px;
+  height: 21px;
+}

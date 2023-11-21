@@ -1,0 +1,5 @@
+.movie__button_saved {
+  background: no-repeat center url(../../../../images/movie__save-icon.svg) #FF4062;
+  width: 21px;
+  height: 21px;
+}

@@ -1,0 +1,9 @@
+.page__button_disabled {
+  background: #F8F8F8;
+  color: #C2C2C2;
+}
+
+.page__button_disabled:hover {
+  background: #F8F8F8;
+  color: #C2C2C2;
+}

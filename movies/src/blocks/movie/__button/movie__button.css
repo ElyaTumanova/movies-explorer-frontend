@@ -1,0 +1,28 @@
+.movie__button {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+
+  padding: 6px 10px;
+  border-radius: 30px;
+  background: #F9F9F9;
+  border: none;
+
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 9px;
+
+  cursor: pointer;
+}
+
+.movie__button:hover {  
+  opacity: 0.8;
+}
+
+@media (max-width:550px) {
+  .movie__button {
+    right: 11px;
+    top: 11px;
+  }
+}
+

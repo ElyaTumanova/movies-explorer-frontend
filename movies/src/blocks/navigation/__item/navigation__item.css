@@ -1,0 +1,39 @@
+.navigation__item {
+  color: #FFF;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  
+  cursor: pointer;
+}
+
+.navigation__item:not(:last-child) {
+  margin-right: 40px;
+}
+
+.navigation__item:after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: #fff; 
+  width: auto;
+  margin: 0;
+}
+
+@media (max-width:550px) {
+ .navigation__item {
+  font-size: 11px;
+ } 
+ .navigation__item:not(:last-child) {
+  margin-right: 24px;
+}
+}
+
+.navigation__item:hover {
+  opacity: 0.7;
+}
+
+.navigation__item:after:hover {
+  opacity: 0.7;
+}

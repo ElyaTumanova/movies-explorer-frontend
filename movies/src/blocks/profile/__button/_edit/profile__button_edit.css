@@ -1,0 +1,8 @@
+.profile__button_edit {
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.profile__button_edit:hover {
+  opacity: 0.7;
+}

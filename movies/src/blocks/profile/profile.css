@@ -1,0 +1,12 @@
+.profile {
+  padding-top: 74px;
+  width: 410px;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (max-width:550px) {
+  .profile {
+    width: 260px;
+  }
+}

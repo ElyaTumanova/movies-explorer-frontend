@@ -1,0 +1,29 @@
+.movie__duration {
+  width: 52px;
+  height: 18px;
+  box-sizing: border-box;
+
+  text-align: center;
+  color: #A0A0A0;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 10px;
+
+  padding: 3px 4px;
+  border-radius: 3px;
+  background: #F9F9F9;
+  margin-right: 15px;
+}
+
+@media (max-width:768px) {
+  .movie__duration {
+    margin-right: 5px;
+  }
+}
+
+@media (max-width:550px) {
+  .movie__duration {
+    margin-right: 5px;
+  }
+}

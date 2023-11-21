@@ -1,0 +1,21 @@
+.student__link {
+  grid-area: link;
+  align-self: flex-end;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+@media (max-width:550px) {
+  .student__link {
+    padding-top: 3px;
+  }
+}
+
+.student__link:hover {
+  opacity: 0.7;
+}

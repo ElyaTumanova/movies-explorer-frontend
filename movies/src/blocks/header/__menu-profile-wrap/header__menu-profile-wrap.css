@@ -1,0 +1,17 @@
+.header__menu-profile-wrap {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+}
+
+
+@media (max-width:768px) {
+  .header__menu-profile-wrap {
+    margin-left: 0;
+  }
+}
+
+.header__menu-profile-wrap:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

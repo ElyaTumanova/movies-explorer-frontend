@@ -1,0 +1,11 @@
+.page__section-width {
+  max-width: 1140px;
+  margin-right: auto; 
+  margin-left: auto; 
+}
+
+@media (max-width:768px) {
+  .page__section-width {
+    max-width: 668px;
+  }
+}

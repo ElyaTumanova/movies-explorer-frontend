@@ -1,0 +1,6 @@
+@media (max-width:550px) {
+  .header__logo_centered {
+    display: block;
+    margin: auto;
+  }
+}

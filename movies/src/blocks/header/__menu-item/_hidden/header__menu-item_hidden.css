@@ -1,0 +1,5 @@
+@media (min-width:769px) {
+  .header__menu-item_hidden {
+    display: none;
+  }
+}

@@ -1,0 +1,19 @@
+
+.page__padding_movie {
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+@media (max-width:768px) {
+  .page__padding_movie {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width:550px) {
+  .page__padding_movie {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

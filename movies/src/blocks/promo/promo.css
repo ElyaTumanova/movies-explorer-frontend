@@ -1,0 +1,24 @@
+.promo {
+  background-color: #F3C1F8;
+  height: 524px;
+  background-image: url(../../images/main__background-image.svg);
+  background-repeat: no-repeat;
+  background-position: center 82px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width:768px) {
+  .promo {
+    height: 784px;
+    background-position: center 224px;
+  }
+}
+
+@media (max-width:550px) {
+  .promo {
+    height: 571px;
+    background-position: center 138px;
+    background-image: url(../../images/main__background-image_mob.svg);
+  }
+}
