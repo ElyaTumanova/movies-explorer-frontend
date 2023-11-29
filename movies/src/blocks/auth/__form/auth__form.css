@@ -1,11 +1,14 @@
 .auth__form {
-  min-height: 335px;
+  /* min-height: 335px; */
   display: flex;
   flex-direction: column;
+  margin-bottom: 72px;
+  position: relative;
 }
 
 @media (max-width:550px) {
   .auth__form {
-    min-height: 421px;
+    /* min-height: 421px; */
+    margin-bottom: 72px;
   }
 }

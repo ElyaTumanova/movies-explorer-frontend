@@ -4,3 +4,9 @@
   position: relative;
   list-style-type: none;
 }
+
+.movie__link {
+  text-decoration: none;
+  color: inherit;
+
+}

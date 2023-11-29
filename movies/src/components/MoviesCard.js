@@ -1,31 +1,68 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {moviesUrl} from '../utils/constants.js'
 import { useMyLocation } from '../hooks/useMyLocation.js';
+import {SavedMoviesContext} from '../contexts/SavedMoviesContext.js'
 
 
-function MoviesCard({movie}) {
+function MoviesCard({movie, onSaveMovie, onDeleteMovie, savedMoveCheck}) {
   const currentPage = useMyLocation();
-  const isSaved = false;
+  const [isSaved, setIsSaved] = useState(false);
+  const [movieId, setMovieId] = useState('');
 
-  const movieDuration = movie.duration;
-  const movieHours = Math.floor(movieDuration / 60);
-  const movieMinutes = movieDuration - movieHours*60;
+  const savedMovies = React.useContext(SavedMoviesContext);
+
+  // console.log(savedMoveCheck (movie, savedMovies))
+
+  useEffect (()=>{
+    setIsSaved (savedMoveCheck (movie, savedMovies).searchResult)
+    setMovieId (savedMoveCheck (movie, savedMovies).movieId)
+  },[savedMovies])
+
+
+  const movieHours = Math.floor(movie.duration / 60);
+  const movieMinutes = movie.duration - movieHours*60;
   
+  function handleSaveMovie () {
+    console.log(isSaved)
+    if (!isSaved) {
+      // console.log(movie)
+      onSaveMovie (movie)
+      setIsSaved(true)
+    } else {
+      onDeleteMovie (movieId)
+    }
+  }
+  
+  function handleDeleteMovie () {
+    // console.log(movie)
+    onDeleteMovie (movie._id)
+  }
 
 
   return (
       <li className='movie'>
-        <img className="movie__cover" alt = {movie.nameRU} src = {`${moviesUrl}/${movie.image.formats.thumbnail.url}`}/>
+        <a href={movie.trailerLink} className='movie__link' target='_blank'>
         { 
           currentPage.pathname === '/movies'  ? 
-          <button className={`${isSaved ? 'movie__button_saved' : ''} movie__button`}  type='button'> 
-          {`${ isSaved ? '' : 'Сохранить'}`}</button> 
+          <img className="movie__cover" alt = {movie.nameRU} src = {`${moviesUrl}/${movie.image.url}`}/>
           : ''
         }
         { 
           currentPage.pathname === '/saved-movies'  ? 
-          <button className='movie__button_remove movie__button' type='button'></button> 
+          <img className="movie__cover" alt = {movie.nameRU} src = {movie.image}/>
+          : ''
+        }
+        </a>
+        { 
+          currentPage.pathname === '/movies'  ? 
+          <button className={`${isSaved ? 'movie__button_saved' : ''} movie__button`}  type='button' onClick={handleSaveMovie}> 
+          {`${ isSaved ? '' : 'Сохранить'}`} </button> 
+          : ''
+        }
+        { 
+          currentPage.pathname === '/saved-movies'  ? 
+          <button className='movie__button_remove movie__button' type='button' onClick={handleDeleteMovie}></button> 
           : ''
         }
         <div className="movie__info">

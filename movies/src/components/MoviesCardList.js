@@ -1,24 +1,20 @@
 import React from 'react';
 import MoviesCard from './MoviesCard'
 
-
-function MoviesCardList({movies, displayMovies, onClick}) {
- 
- // console.log (movies)
+function MoviesCardList({displayMovies, onSaveMovie, onDeleteMovie, savedMoveCheck}) {
 
   return (
     <div className="movies">
       <ul className="movies__wrap">
-        {movies.slice(0, displayMovies).map (movie =>
+        {displayMovies.map (movie =>
           (<MoviesCard movie = {movie}
-            key={movie.id}
+            key={movie.id || movie._id}
+            onSaveMovie = {onSaveMovie}
+            onDeleteMovie = {onDeleteMovie}
+            savedMoveCheck = {savedMoveCheck}
           />)
       )}
     </ul>
-    {displayMovies < movies.length ?
-      <button className="movies__loadmore" type='button' onClick={onClick}>Ещё</button>
-      : ''
-      }
     </div>
   );
 }

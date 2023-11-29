@@ -4,7 +4,7 @@ import { useEffect,useState } from 'react';
 import {useLocation} from 'react-router-dom';
 
 
-function Navigation({isLoggedIn}) {
+function Navigation({isLoggedIn, onClickMobClose}) {
 
   const [currentPage, setCurrentPage] = useState('');
   const location = useLocation();
@@ -26,7 +26,8 @@ function Navigation({isLoggedIn}) {
               isTransitioning ? "header__menu-item header__menu-item_hidden" : "",
             ].join(" ")
           }
-          to='/'>Главная</NavLink ></li>
+          to='/'
+          onClick={onClickMobClose}>Главная</NavLink ></li>
           <li><NavLink  
           className={({ isActive, isPending, isTransitioning }) =>
             [ 
@@ -36,7 +37,8 @@ function Navigation({isLoggedIn}) {
               isTransitioning ? "header__menu-item" : "",
             ].join(" ")
           }
-          to='/movies'>Фильмы</NavLink ></li>
+          to='/movies'
+          onClick={onClickMobClose}>Фильмы</NavLink ></li>
           <li><NavLink  
           className={({ isActive, isPending, isTransitioning }) =>
             [
@@ -46,10 +48,11 @@ function Navigation({isLoggedIn}) {
               isTransitioning ? "header__menu-item" : "",
             ].join(" ")
           } 
-          to='/saved-movies'>Сохранённые фильмы</NavLink ></li>
+          to='/saved-movies'
+          onClick={onClickMobClose}>Сохранённые фильмы</NavLink ></li>
         </ul>
         <div className="header__menu-profile-wrap">
-          <Link className="header__menu-profile-btn" to='/profile'>Аккаунт</Link>
+          <Link className="header__menu-profile-btn" to='/profile' onClick={onClickMobClose}>Аккаунт</Link>
           <div className={`header__menu-profile-img ${currentPage.pathname === '/'? 'header__menu-profile-img_main' : 'header__menu-profile-img_other'}`}></div>
         </div>
       </nav>
