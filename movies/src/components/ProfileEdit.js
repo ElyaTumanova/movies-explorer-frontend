@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useFormAndValidation } from '../hooks/useFormAndValidation.js';
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js' 
 
-function ProfileEdit({isProfileEditOpen, setIsProfileEditOpen, onUpdateUser, regError, setRegError}) {
+function ProfileEdit({isProfileEditOpen, setIsProfileEditOpen, onUpdateUser, regError, setRegError, regSuccess, setRegSuccess}) {
   
   const {values, handleChange, errors, isValid, setValues, setIsValid, setErrors} = useFormAndValidation();
   const user = React.useContext(CurrentUserContext);
@@ -15,12 +15,13 @@ function ProfileEdit({isProfileEditOpen, setIsProfileEditOpen, onUpdateUser, reg
     setErrors ({});
     setIsValid(false);
     setRegError('');
+    setRegSuccess('');
   }, []);
 
   function handleSubmit (e) {
     e.preventDefault();
-    onUpdateUser (values);
     setIsValid(false);
+    onUpdateUser (values);
   }
       
   function handleCancelEdit () {
@@ -53,9 +54,10 @@ function ProfileEdit({isProfileEditOpen, setIsProfileEditOpen, onUpdateUser, reg
         <div className="profile__wrap">
           <label className="profile__label">E-mail</label>
           <input
-            type="email"
+            type="text"
             name="email" 
             className= "profile__value profile__value_edit"
+            pattern='\S{1,999}@[a-zA-Z]{1,999}\.[a-zA-Z]{1,999}'
             required 
             placeholder={'E-mail'}
             value = {values.email||""}
@@ -66,7 +68,8 @@ function ProfileEdit({isProfileEditOpen, setIsProfileEditOpen, onUpdateUser, reg
       </form>
       <div className="profile__buttons">
         <div className="profile__error-msg">{regError}</div>
-        <button className={`page__button ${isValid ? '' : 'page__button_not-active'}`} type='submit' form="profile__info" onClick={handleSubmit}>Сохранить</button>
+        <div className="profile__error-msg profile__error-msg_success">{regSuccess}</div>
+        <button disabled={!isValid} className={`page__button ${isValid ? '' : 'page__button_not-active'}`} type='submit' form="profile__info" onClick={handleSubmit}>Сохранить</button>
         <button className="profile__button profile__button_cancel" type="button" onClick={handleCancelEdit}>Закрыть</button>
       </div>
     </section>

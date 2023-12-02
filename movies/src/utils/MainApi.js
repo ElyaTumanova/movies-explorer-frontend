@@ -4,8 +4,13 @@ class Api {
     this._headers = config.headers;
     this._authorization = localStorage.getItem('token');
   }
+
+  getToken() {
+    console.log(this._authorization)
+  }
  
   getMovies () {
+    // console.log(this._authorization)
     return this._request (`${this._url}/movies`,
     {
       headers: {
@@ -16,6 +21,7 @@ class Api {
   }
 
   saveMovie (movie, imageLink, imageThumbnail) {
+    // console.log(this._authorization)
     return this._request (`${this._url}/movies`,
     {
       method: 'POST',
@@ -51,6 +57,7 @@ class Api {
   }
 
   updateMyUser (email, name) {
+    console.log(this._authorization)
     return this._request (`${this._url}/users/me`,
     {
       method: 'PATCH',

@@ -8,11 +8,21 @@ import {SavedMoviesContext} from '../contexts/SavedMoviesContext.js'
 function UserMovies({isShortsSearch, setIsShortsSearch,  
   handleSearchSubmit, searchValue, setSearchValue,  
   isNotFound, setIsNotFound, isNoQuiery, setIsNoQuiery, 
-  onSaveMovie, onDeleteMovie, savedMoveCheck, searchedMovies}) {
+  onSaveMovie, onDeleteMovie, checkSavedMovies, searchedMovies, getSavedMovies}) {
 
   const savedMovies = React.useContext(SavedMoviesContext);
   
   const  [displayMovies, setDisplayMovies] = useState ([]);
+
+  useEffect (()=>{
+    getSavedMovies()
+  }, [])
+
+  useEffect (()=>{
+    if(searchValue) {
+      handleSearchSubmit (searchValue);
+    }
+  }, [savedMovies])
 
 
   useEffect (()=>{
@@ -55,7 +65,7 @@ function UserMovies({isShortsSearch, setIsShortsSearch,
         displayMovies = {displayMovies}
         onSaveMovie={onSaveMovie}
         onDeleteMovie={onDeleteMovie}
-        savedMoveCheck = {savedMoveCheck}
+        checkSavedMovies = {checkSavedMovies}
         savedMovies = {savedMovies}
         />
       </main>

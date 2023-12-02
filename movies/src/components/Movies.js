@@ -9,7 +9,7 @@ import NoResult from './NoResult';
 
 function Movies({isShortsSearch, setIsShortsSearch, movies, 
   handleSearchSubmit, searchValue, setSearchValue, isLoading, 
-  isNotFound, isSearchError, isNoQuiery, onSaveMovie, onDeleteMovie, savedMoveCheck}) {
+  isNotFound, isSearchError, isNoQuiery, onSaveMovie, onDeleteMovie, checkSavedMovies}) {
 
   // ФУНКЦИОНАЛЬНОСТЬ ДЛЯ ОПРЕДЕЛЕНИЯ КОЛ-ВА ВЫВОДИМЫХ КАРТОЧЕК НА СТРАНИЦЕ
   const [moviesInRow, setMoviesInRow] = useState(0);
@@ -66,7 +66,7 @@ function Movies({isShortsSearch, setIsShortsSearch, movies,
     setDisplayMovies(movies.slice(0, displayMoviesAmount))
   }, [movies, displayMoviesAmount])
 
-  console.log(displayMovies)
+  // console.log(displayMovies)
   
   // END
 
@@ -99,7 +99,7 @@ function Movies({isShortsSearch, setIsShortsSearch, movies,
       displayMovies = {displayMovies}
       onSaveMovie={onSaveMovie}
       onDeleteMovie={onDeleteMovie}
-      savedMoveCheck = {savedMoveCheck}
+      checkSavedMovies = {checkSavedMovies}
       />
 
       {displayMoviesAmount < movies.length ?

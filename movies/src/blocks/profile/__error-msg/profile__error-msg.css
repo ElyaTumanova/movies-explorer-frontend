@@ -16,3 +16,7 @@
     max-width: 260px;
   }
 }
+
+.profile__error-msg_success {
+  color: green;
+}

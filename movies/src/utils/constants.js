@@ -13,4 +13,6 @@ const footerPathsArray = [
 
 const moviesUrl = 'https://api.nomoreparties.co'
 
-export {headerPathsArray, footerPathsArray, moviesUrl}
+const shortMovieDuration = 40
+
+export {headerPathsArray, footerPathsArray, moviesUrl, shortMovieDuration}

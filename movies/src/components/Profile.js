@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ProfileEdit from './ProfileEdit.js';
 import ProfileInfo from './ProfileInfo.js';
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js'
 
-function Profile({isProfileEditOpen, setIsProfileEditOpen, handleSignout, onUpdateUser, regError, setRegError}) {
+function Profile({isProfileEditOpen, setIsProfileEditOpen, handleSignout, onUpdateUser, regError, setRegError,regSuccess, setRegSuccess}) {
 
   const user = React.useContext(CurrentUserContext);
 
@@ -20,7 +20,9 @@ function Profile({isProfileEditOpen, setIsProfileEditOpen, handleSignout, onUpda
         setIsProfileEditOpen = {setIsProfileEditOpen}
         onUpdateUser = {onUpdateUser}
         regError={regError}
-        setRegError={setRegError}/>
+        setRegError={setRegError}
+        regSuccess = {regSuccess}
+        setRegSuccess = {setRegSuccess}/>
     </main>
 
   );

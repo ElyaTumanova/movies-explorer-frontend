@@ -6,7 +6,7 @@ import { useFormAndValidation } from '../hooks/useFormAndValidation.js';
 
 function Login ({onLogin, regError, setRegError}) {
 
-  const {values, handleChange, errors, isValid, resetForm} = useFormAndValidation();
+  const {values, handleChange, errors, isValid, resetForm, setIsValid} = useFormAndValidation();
 
   React.useEffect(() => {
     resetForm()
@@ -16,6 +16,7 @@ function Login ({onLogin, regError, setRegError}) {
   function handleSubmit (e) {
     e.preventDefault()
     const {email, password} = values;
+    setIsValid(false);
     onLogin (email, password) 
   }
 

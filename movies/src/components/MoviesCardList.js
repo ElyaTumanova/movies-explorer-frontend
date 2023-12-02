@@ -1,7 +1,10 @@
 import React from 'react';
 import MoviesCard from './MoviesCard'
 
-function MoviesCardList({displayMovies, onSaveMovie, onDeleteMovie, savedMoveCheck}) {
+
+function MoviesCardList({displayMovies, onSaveMovie, onDeleteMovie, checkSavedMovies}) {
+
+  // console.log(displayMovies)
 
   return (
     <div className="movies">
@@ -11,7 +14,7 @@ function MoviesCardList({displayMovies, onSaveMovie, onDeleteMovie, savedMoveChe
             key={movie.id || movie._id}
             onSaveMovie = {onSaveMovie}
             onDeleteMovie = {onDeleteMovie}
-            savedMoveCheck = {savedMoveCheck}
+            checkSavedMovies = {checkSavedMovies}
           />)
       )}
     </ul>

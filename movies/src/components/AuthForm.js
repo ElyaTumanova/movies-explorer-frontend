@@ -32,10 +32,11 @@ function AuthForm ({values, handleSubmit, errors, regError, isValid, handleChang
       }       
         <div className="auth__input-wrap">
           <label className="auth__label">E-mail</label>
-          <input type="email"
+          <input type="text"
             name="email" 
             className= "auth__input"
             placeholder='E-mail'
+            pattern='\S{1,999}@[a-zA-Z]{1,999}\.[a-zA-Z]{1,999}'
             required 
             value = {values.email||""} 
             onChange={handleChange}
@@ -59,7 +60,7 @@ function AuthForm ({values, handleSubmit, errors, regError, isValid, handleChang
 
       <div className="auth__error-msg">{regError} </div>
       </form>
-      <button className={`page__button ${isValid ? '' : 'page__button_not-active'}`}  type='submit' form="auth__form">{button}</button>
+      <button disabled={!isValid} className={`page__button ${isValid ? '' : 'page__button_not-active'}`} type='submit' form="auth__form">{button}</button>
       <div className="auth__login-caption">{loginCaption} <Link className="auth__login-link"to={link}>{linkName}</Link></div>
     </main>
   );

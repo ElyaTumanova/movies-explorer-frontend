@@ -1,20 +1,20 @@
 import React from 'react';
 import FilterCheckbox from './FilterCheckbox'
 
-
 function SearchForm({isShortsSearch, handleSearchSubmit, searchValue, setSearchValue, handleChechboxClick, checkbox}) {
 
   function handleChange(e) {
     setSearchValue(e.target.value);
   }
 
-  function onSubmit () {  
+  function handleSubmit (e) {  
+    e.preventDefault();
     handleSearchSubmit (searchValue);
   }
 
   return (
       <section className='search page__section-width page__section-width_movies'>
-        <form className="search__form" name='searchForm'>
+        <form className="search__form" name='searchForm' id='search'>
           <div className="search__wrap">
             <div className="search__input-wrap">
               <div className="search__icon"></div>
@@ -26,7 +26,7 @@ function SearchForm({isShortsSearch, handleSearchSubmit, searchValue, setSearchV
               value = {searchValue||''}
               onChange={handleChange}
               required/>
-              <button className="search__button" type="button" form='search' onClick={onSubmit}>Найти</button>
+              <button className="search__button" type="submit" form='search' onClick={handleSubmit}>Найти</button>
             </div>
             <div className="search__shorts-wrap">
               <FilterCheckbox 

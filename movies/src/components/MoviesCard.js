@@ -5,18 +5,19 @@ import { useMyLocation } from '../hooks/useMyLocation.js';
 import {SavedMoviesContext} from '../contexts/SavedMoviesContext.js'
 
 
-function MoviesCard({movie, onSaveMovie, onDeleteMovie, savedMoveCheck}) {
+function MoviesCard({movie, onSaveMovie, onDeleteMovie, checkSavedMovies}) {
   const currentPage = useMyLocation();
   const [isSaved, setIsSaved] = useState(false);
   const [movieId, setMovieId] = useState('');
 
   const savedMovies = React.useContext(SavedMoviesContext);
 
-  // console.log(savedMoveCheck (movie, savedMovies))
+  // console.log(checkSavedMovies (movie, savedMovies))
+  // console.log(savedMovies)
 
   useEffect (()=>{
-    setIsSaved (savedMoveCheck (movie, savedMovies).searchResult)
-    setMovieId (savedMoveCheck (movie, savedMovies).movieId)
+    setIsSaved (checkSavedMovies (movie, savedMovies).searchResult)
+    setMovieId (checkSavedMovies (movie, savedMovies).movieId)
   },[savedMovies])
 
 
@@ -28,7 +29,6 @@ function MoviesCard({movie, onSaveMovie, onDeleteMovie, savedMoveCheck}) {
     if (!isSaved) {
       // console.log(movie)
       onSaveMovie (movie)
-      setIsSaved(true)
     } else {
       onDeleteMovie (movieId)
     }

@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate  } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { Routes, Route, useNavigate} from 'react-router-dom';
 
 import { useMyLocation } from '../hooks/useMyLocation.js';
 
@@ -22,15 +22,18 @@ import {api} from '../utils/MainApi.js'
 import * as Auth from '../utils/Auth.js';
 
 import {headerPathsArray, footerPathsArray} from '../utils/constants.js' // пути, где применяются хедер и футер
-import {moviesUrl} from '../utils/constants.js';
+import {moviesUrl, shortMovieDuration} from '../utils/constants.js';
 
 function App() {
   const navigate = useNavigate ();
   const currentPage = useMyLocation();
 
   const [isLoggedIn, setIsLoggedIn] = useState (false);
+  const [isTokenChecked, setIsTokenCheked] = useState (false);
+
   const [user, setUser] = useState ({});
   const [regError, setRegError] = useState ('');
+  const [regSuccess, setRegSuccess] = useState ('');
 
   const [isProfileEditOpen, setIsProfileEditOpen] = useState (false);
   const [isMobMenuOpen, setMobMenuOpen] = useState (false);
@@ -53,6 +56,14 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [searchSavedValue, setSearcSavedhValue] = useState('');
 
+
+  //useEffect
+  
+  // console.log (`isTokenChecked ${isTokenChecked}`)
+  useEffect(()=> {
+    console.log('hi app')
+    checkToken()
+  },[])
 
   function handleMenuMobOpen () {
     setMobMenuOpen (true)
@@ -77,45 +88,51 @@ function handleRegister (values) {
 }
 
 function handleLogin (email, password) {
-  Auth.login(email, password)
-  .then((data) => {
-    // console.log(data.token);
-    const token = data.token;
-    localStorage.setItem('token', token);
-    handleAuth (token);
-  })
-  .catch((err)=>setRegError(err.message));  
+    Auth.login(email, password)
+    .then((data) => {
+      // console.log(data.token);
+      const token = data.token;
+      localStorage.setItem('token', token);
+      handleAuth (token);
+    })
+    .then(()=>api.getToken())
+    .catch((err)=>setRegError(err.message));
 }
 
   function handleAuth (token) {
+    console.log('hi handleauth')
     // console.log(token)
     Auth.authorize(token)
     .then ((res)=>{
+      setIsTokenCheked (true);
       setIsLoggedIn(true);
       setUser({name: res.name, email: res.email})
+      // checkToken()
       navigate ('/movies');
     })
     .catch((err)=>console.log (`catch:${err}`));
   }
 
-  useEffect(()=> {
-    tockenChek()
-  },[])
   
-  function tockenChek () {
+  function checkToken () {
+    console.log('hi token')
     const token = localStorage.getItem('token');
-    if (token) {
-      // console.log(token);
+    // if (token) {
       Auth.authorize (token)
       .then((res) => {
         if(res) {
+          console.log('hi auth')
           setIsLoggedIn(true);
           setUser({name: res.name, email: res.email})
-          navigate('/')
+          // navigate('/')
+          setIsTokenCheked (true);
         }
       })
-      .catch((err)=>console.log (`catch:${err}`))
-    }
+      .catch((err)=>{
+        console.log('tockenchek failed')
+        setIsTokenCheked (true);
+        console.log (`catch:${err}`)})
+    // }
   }
 
   function handleSignout () {
@@ -145,7 +162,7 @@ function handleLogin (email, password) {
             let strMovie = `${movie.nameRU} ${movie.nameEN}`
             if (isShortsSearch) {
               localStorage.setItem('isShortsSearch', true);
-              if (strMovie.toLowerCase().includes (value.toLowerCase()) & Math.floor(movie.duration / 40)<1) {
+              if (strMovie.toLowerCase().includes (value.toLowerCase()) & Math.floor(movie.duration / shortMovieDuration)<1) {
                 return movie;
               }
             } else {
@@ -186,7 +203,7 @@ function handleLogin (email, password) {
       searchedMovies = savedMovies.filter((movie) => {
         let strMovie = `${movie.nameRU} ${movie.nameEN}`
         if (isShortsSavedSearch) {
-          if (strMovie.toLowerCase().includes (value.toLowerCase()) & Math.floor(movie.duration / 40)<1) {
+          if (strMovie.toLowerCase().includes (value.toLowerCase()) & Math.floor(movie.duration / shortMovieDuration)<1) {
             return movie;
           }
         } else {
@@ -202,7 +219,7 @@ function handleLogin (email, password) {
     } else {
       if (isShortsSavedSearch) {
         searchedMovies = savedMovies.filter((movie) => {
-          if (Math.floor(movie.duration / 40)<1) {
+          if (Math.floor(movie.duration / shortMovieDuration)<1) {
             return movie;
           }
         })
@@ -246,13 +263,17 @@ function handleLogin (email, password) {
   // РАБОТА С MAIN API
 
   useEffect (()=>{  
+    getSavedMovies();
+  }, [])
+
+  function getSavedMovies () {
     console.log('hi saved movies')
     api.getMovies()
     .then (function (res) {
       setSavedMovies(res)
     })
     .catch((err)=>console.log (`catch:${err}`));
-  }, [])
+  }
 
   
   function handleSubmit (request) {
@@ -261,7 +282,8 @@ function handleLogin (email, password) {
     .catch((err)=>setRegError(err.message)); 
   }
 
-  function savedMoveCheck (movie, savedMovies) {
+
+  function checkSavedMovies (movie, savedMovies) {
     const searchKey = `${movie.nameRU}`;
     let movieCheck = {searchResult:false, movieId:''}
     savedMovies.forEach((m)=>{
@@ -273,7 +295,8 @@ function handleLogin (email, password) {
   }
 
   function handleSaveMovie (movie) {
-    const searchResult = savedMoveCheck(movie, savedMovies).searchResult;
+    console.log('hi its savemov')
+    const searchResult = checkSavedMovies(movie, savedMovies).searchResult;
     if (!searchResult) {
       const imageLink = `${moviesUrl}${movie.image.url}`
       const imageThumbnail = `${moviesUrl}${movie.image.formats.thumbnail.url}`
@@ -301,7 +324,8 @@ function handleLogin (email, password) {
     function makeRequest () {
       return api.updateMyUser (values.email, values.name)
       .then(function(res) {
-        setUser({name: values.name, email: values.email})
+        setUser({name: res.name, email: res.email})
+        setRegSuccess ('Профиль успешно обновлен')
       })
       }
     handleSubmit (makeRequest);
@@ -312,6 +336,7 @@ function handleLogin (email, password) {
   return (
     <CurrentUserContext.Provider value={user}>
     <SavedMoviesContext.Provider value={savedMovies}>
+          { isTokenChecked === true ?
       <div className="App">
         <div className="page">
           {headerPathsArray.indexOf(currentPage.pathname) >= 0 && <Header
@@ -322,54 +347,6 @@ function handleLogin (email, password) {
           <Routes>
             <Route path="*" element={<PageNotFound/>}/>
             <Route path="/" element={<Main />} />
-
-            <Route path="/movies" element= {<ProtectedRouteElement
-              element = {Movies}
-              isShortsSearch = {isShortsSearch}
-              setIsShortsSearch = {setIsShortsSearch}
-              movies = {movies}
-              handleSearchSubmit = {findMovies}
-              searchValue = {searchValue}
-              setSearchValue = {setSearchValue}
-              isLoading = {isLoading}
-              isNotFound = {isNotFound}
-              isSearchError = {isSearchError}
-              isNoQuiery = {isNoQuiery}
-              isLoggedIn = {isLoggedIn}
-              onSaveMovie = {handleSaveMovie}
-              onDeleteMovie = {handleDeleteMovie}
-              savedMoveCheck = {savedMoveCheck}
-              savedMovies = {savedMovies}
-            />}/>
-            <Route path="/saved-movies" element={<ProtectedRouteElement
-              element = {UserMovies}
-              isShortsSearch = {isShortsSavedSearch}
-              setIsShortsSearch = {setIsShortsSavedSearch}
-              onDeleteMovie = {handleDeleteMovie}
-              isLoggedIn = {isLoggedIn}
-              savedMoveCheck = {savedMoveCheck}
-              savedMovies = {savedMovies}
-              handleSearchSubmit= {findSavedMovies}
-              searchValue = {searchSavedValue}
-              setSearchValue = {setSearcSavedhValue}
-              searchedMovies = {searchedMovies}
-              isNotFound = {isNotFoundSaved}
-              setIsNotFound = {setIsNotFoundSaved}
-              isNoQuiery = {isNoQuierySaved}
-              setIsNoQuiery = {setIsNoQuierySaved}
-
-
-            />} />
-            <Route path="/profile" element={<ProtectedRouteElement
-              element = {Profile}
-              isProfileEditOpen={isProfileEditOpen}
-              setIsProfileEditOpen = {setIsProfileEditOpen}
-              isLoggedIn = {isLoggedIn}
-              handleSignout = {handleSignout}
-              onUpdateUser = {onUpdateUser}
-              regError = {regError}
-              setRegError = {setRegError}
-            />}/>
             <Route path="/signin" element={<Login
               onLogin = {handleLogin}
               regError = {regError} 
@@ -379,12 +356,67 @@ function handleLogin (email, password) {
               onRegister = {handleRegister}
               regError = {regError} 
               setRegError = {setRegError}
-            />} 
-            />
+            />}/>
+
+        
+              <Route path="/movies" element= {<ProtectedRouteElement
+                element = {Movies}
+                isShortsSearch = {isShortsSearch}
+                setIsShortsSearch = {setIsShortsSearch}
+                movies = {movies}
+                handleSearchSubmit = {findMovies}
+                searchValue = {searchValue}
+                setSearchValue = {setSearchValue}
+                isLoading = {isLoading}
+                isNotFound = {isNotFound}
+                isSearchError = {isSearchError}
+                isNoQuiery = {isNoQuiery}
+                isLoggedIn = {isLoggedIn}
+                onSaveMovie = {handleSaveMovie}
+                onDeleteMovie = {handleDeleteMovie}
+                checkSavedMovies = {checkSavedMovies}
+                savedMovies = {savedMovies}
+              />}/>
+
+              <Route path="/saved-movies" element={<ProtectedRouteElement
+                element = {UserMovies}
+                isShortsSearch = {isShortsSavedSearch}
+                setIsShortsSearch = {setIsShortsSavedSearch}
+                onDeleteMovie = {handleDeleteMovie}
+                isLoggedIn = {isLoggedIn}
+                checkSavedMovies = {checkSavedMovies}
+                savedMovies = {savedMovies}
+                handleSearchSubmit= {findSavedMovies}
+                searchValue = {searchSavedValue}
+                setSearchValue = {setSearcSavedhValue}
+                searchedMovies = {searchedMovies}
+                isNotFound = {isNotFoundSaved}
+                setIsNotFound = {setIsNotFoundSaved}
+                isNoQuiery = {isNoQuierySaved}
+                setIsNoQuiery = {setIsNoQuierySaved}
+                getSavedMovies = {getSavedMovies}
+              />} />
+
+              <Route path="/profile" element={<ProtectedRouteElement
+                element = {Profile}
+                isProfileEditOpen={isProfileEditOpen}
+                setIsProfileEditOpen = {setIsProfileEditOpen}
+                isLoggedIn = {isLoggedIn}
+                handleSignout = {handleSignout}
+                onUpdateUser = {onUpdateUser}
+                regError = {regError}
+                setRegError = {setRegError}
+                regSuccess = {regSuccess}
+                setRegSuccess = {setRegSuccess}
+              />}/>            
+           
           </Routes>
           {footerPathsArray.indexOf(currentPage.pathname) >= 0 && <Footer/>}
         </div>
       </div>
+
+          : ''  
+          }
     </SavedMoviesContext.Provider>
     </CurrentUserContext.Provider>
   );
