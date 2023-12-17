@@ -3,19 +3,25 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal; 
-
   padding: 15px;
   background-color: #F9F9F9;
   border-radius: 8px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   border: none;
   cursor: pointer;
 }
 
-.auth__input:last-of-type {
-  margin-bottom: 10px;
+.auth__input:invalid {
+  color: #FF4062;
 }
 
 .auth__input:focus {
   outline: 1px solid #000;
+}
+
+.auth__input-wrap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  position: relative;
 }

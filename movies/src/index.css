@@ -120,7 +120,6 @@
 @import url(./blocks/auth/__form/auth__form.css);
 @import url(./blocks/auth/__heading/auth__heading.css);
 @import url(./blocks/auth/__input/auth__input.css);
-@import url(./blocks/auth/__input/_error/auth__input_error.css);
 @import url(./blocks/auth/__label/auth__label.css);
 @import url(./blocks/auth/__login-caption/auth__login-caption.css);
 @import url(./blocks/auth/__login-link/auth__login-link.css);
@@ -129,6 +128,9 @@
 @import url(./blocks/page-404/__back/page-404__back.css);
 @import url(./blocks/page-404/__heading/page-404__heading.css);
 @import url(./blocks/page-404/__subheading/page-404__subheading.css);
+
+@import url(./blocks/no-result/no-result.css);
+@import url(./blocks/no-result/__heading/no-result__heading.css);
 
 @import url(./blocks/preloader/preloader.css);
 @import url(./blocks/preloader/__container/preloader__container.css);

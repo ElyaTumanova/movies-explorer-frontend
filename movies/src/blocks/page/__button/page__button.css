@@ -27,3 +27,12 @@
     font-size: 12px;
   }
 }
+
+.page__button_not-active {
+  background: #F8F8F8;
+  color:#C2C2C2;
+}
+.page__button_not-active:hover {
+  background: #F8F8F8;
+  color:#C2C2C2;
+}

@@ -1,6 +1,6 @@
 .profile__error-msg {
   position: absolute;
-  bottom: 80px;
+  bottom: 110px;
   width: 410px;
 
   text-align: center;
@@ -15,4 +15,8 @@
   .profile__error-msg {
     max-width: 260px;
   }
+}
+
+.profile__error-msg_success {
+  color: green;
 }

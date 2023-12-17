@@ -1,0 +1,24 @@
+.no-result {
+  /* padding-top: 40px; */
+  position: relative;
+  text-align: center;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width:768px) {
+  .no-result {
+    padding-top: 0px;
+  }
+}
+@media (max-width:550px) {
+  .no-result {
+    padding-top: 0px;
+  }
+}
+
+.no-result_opened {
+  display: flex;
+}

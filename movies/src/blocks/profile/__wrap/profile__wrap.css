@@ -3,6 +3,7 @@
   justify-content: space-between;
   margin: auto;
   padding-top: 18px;
+  position: relative;
 }
 
 @media (max-width: 550px) {

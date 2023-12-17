@@ -9,6 +9,7 @@ function MenuMobPopup ({isLoggedIn, isOpen, onClickMobClose}) {
         <button className="header__menu-popup-close" onClick={onClickMobClose} type='button'></button>
         <Navigation
         isLoggedIn = {isLoggedIn}
+        onClickMobClose = {onClickMobClose}
         />
       </div>
     </section>
