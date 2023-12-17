@@ -18,6 +18,11 @@ function ProfileEdit({isProfileEditOpen, setIsProfileEditOpen, onUpdateUser, reg
     setRegSuccess('');
   }, []);
 
+  useEffect(() => {
+    setRegError('');
+    setRegSuccess('');
+  }, [values]);
+
   function handleSubmit (e) {
     e.preventDefault();
     setIsValid(false);

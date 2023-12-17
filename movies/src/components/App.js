@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate} from 'react-router-dom';
 
 import { useMyLocation } from '../hooks/useMyLocation.js';
@@ -14,6 +14,7 @@ import Login from './Login';
 import Register from './Register';
 import PageNotFound from './PageNotFound';
 import ProtectedRouteElement from './ProtectedRoute';
+import ProtectedRouteElementLogin from './ProtectedRouteLogin.js';
 import {SavedMoviesContext} from '../contexts/SavedMoviesContext.js'
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js'
 
@@ -38,6 +39,7 @@ function App() {
   const [isProfileEditOpen, setIsProfileEditOpen] = useState (false);
   const [isMobMenuOpen, setMobMenuOpen] = useState (false);
 
+  const [beatFilms, setBeatFilms] = useState ([]);
   const [movies, setMovies] = useState ([]);
   const [savedMovies, setSavedMovies] = useState ([]);
   const [searchedMovies, setSearchedMovies] = useState ([]);
@@ -95,7 +97,7 @@ function handleLogin (email, password) {
       localStorage.setItem('token', token);
       handleAuth (token);
     })
-    .then(()=>api.getToken())
+    // .then(()=>api.getToken())
     .catch((err)=>setRegError(err.message));
 }
 
@@ -107,7 +109,7 @@ function handleLogin (email, password) {
       setIsTokenCheked (true);
       setIsLoggedIn(true);
       setUser({name: res.name, email: res.email})
-      // checkToken()
+      checkToken();
       navigate ('/movies');
     })
     .catch((err)=>console.log (`catch:${err}`));
@@ -136,50 +138,35 @@ function handleLogin (email, password) {
   }
 
   function handleSignout () {
+    console.log('signout')
     localStorage.clear();
     setIsLoggedIn(false);
-    setUser({})
+    setUser({});
+    setSearchValue('');
     navigate('/sign-in');
   }
   //END
 
+
+
   // ВЫВОД ФИЛЬМОВ ДЛЯ СТРАНИЦЫ /movies
   function findMovies (value) {
     console.log('find mov')
-    console.log (value)
+    console.log(`value ${value}`)
     setIsNotFound (false);
     setIsSearchError (false);
     setIsNoQuiery (false);
     setMovies ([]);
-    let searchedMovies = [];
+    localStorage.setItem('searchQuiery', value);
 
     if (value !== '' ) {
+      if (beatFilms.length === 0) {
         setIsLoading (true);
-        localStorage.setItem('searchQuiery', searchValue);
+        console.log('getting beatfilms')
         moviesApi.getMovies()
         .then (function (res) {
-          searchedMovies = res.filter((movie) => {
-            let strMovie = `${movie.nameRU} ${movie.nameEN}`
-            if (isShortsSearch) {
-              localStorage.setItem('isShortsSearch', true);
-              if (strMovie.toLowerCase().includes (value.toLowerCase()) & Math.floor(movie.duration / shortMovieDuration)<1) {
-                return movie;
-              }
-            } else {
-              localStorage.setItem('isShortsSearch', false);
-              if (strMovie.toLowerCase().includes (value.toLowerCase())) {
-                return movie;
-              }
-            }
-          })
-          setMovies(searchedMovies);
-          localStorage.setItem('searchedMovies', JSON.stringify (searchedMovies));
-          if (searchedMovies.length === 0) {
-            setIsNotFound (true);
-            localStorage.setItem('isNotFound', true);
-          } else {
-            localStorage.setItem('isNotFound', false);
-          }
+          filterMovies (res, value)
+          setBeatFilms (res)
         })
         .catch((err)=>{
           console.log (`catch:${err}`);
@@ -188,8 +175,40 @@ function handleLogin (email, password) {
         .finally(() => {
           setIsLoading(false);
         });
+      } else {
+        filterMovies (beatFilms, value)
+      }
     } else {
       setIsNoQuiery (true)
+      setMovies([]);
+      localStorage.removeItem('searchedMovies')
+    }
+  }
+
+  // поиск фильмов с учетом критериев
+  function filterMovies (movies, value) {
+    let searchedMovies = [];
+    searchedMovies = movies.filter((movie) => {
+      let strMovie = `${movie.nameRU} ${movie.nameEN}`
+      if (isShortsSearch) {
+        localStorage.setItem('isShortsSearch', true);
+        if (strMovie.toLowerCase().includes (value.toLowerCase()) & Math.floor(movie.duration / shortMovieDuration)<1) {
+          return movie;
+        }
+      } else {
+        localStorage.setItem('isShortsSearch', false);
+        if (strMovie.toLowerCase().includes (value.toLowerCase())) {
+          return movie;
+        }
+      }
+    })
+    setMovies(searchedMovies);
+    localStorage.setItem('searchedMovies', JSON.stringify (searchedMovies));
+    if (searchedMovies.length === 0) {
+      setIsNotFound (true);
+      localStorage.setItem('isNotFound', true);
+    } else {
+      localStorage.setItem('isNotFound', false);
     }
   }
 
@@ -238,12 +257,14 @@ function handleLogin (email, password) {
   // ВЫВОД ФИЛЬМОВ ДЛЯ СТРАНИЦЫ /movies при первой загрузке на основании localStorage
 
   useEffect (()=> {
-    // console.log('from local')
+    console.log('from local')
     const searchQuiery = localStorage.getItem('searchQuiery');
     const searchedMovies = JSON.parse(localStorage.getItem('searchedMovies'));
     const isNotFound = JSON.parse(localStorage.getItem('isNotFound'));
     const isShortsSearch = JSON.parse(localStorage.getItem('isShortsSearch'));
   
+    // console.log (searchQuiery);
+
     if (searchQuiery) {
       setSearchValue(searchQuiery);
     }
@@ -347,12 +368,16 @@ function handleLogin (email, password) {
           <Routes>
             <Route path="*" element={<PageNotFound/>}/>
             <Route path="/" element={<Main />} />
-            <Route path="/signin" element={<Login
+            <Route path="/signin" element={<ProtectedRouteElementLogin
+              element = {Login}
+              isLoggedIn = {isLoggedIn}
               onLogin = {handleLogin}
               regError = {regError} 
               setRegError = {setRegError}
               />}/>
-            <Route path="/signup" element={<Register
+            <Route path="/signup" element={<ProtectedRouteElementLogin
+              element = {Register}
+              isLoggedIn = {isLoggedIn}
               onRegister = {handleRegister}
               regError = {regError} 
               setRegError = {setRegError}

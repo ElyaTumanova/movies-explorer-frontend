@@ -2,31 +2,27 @@ class Api {
   constructor (config) {
     this._url = config.url;
     this._headers = config.headers;
-    this._authorization = localStorage.getItem('token');
   }
 
-  getToken() {
-    console.log(this._authorization)
-  }
- 
+
   getMovies () {
-    // console.log(this._authorization)
+    const token = localStorage.getItem('token');
     return this._request (`${this._url}/movies`,
     {
       headers: {
-        authorization: `Bearer ${this._authorization}`,
+        authorization: `Bearer ${token}`,
         'Content-type': 'application/json'
       },
     })
   }
 
   saveMovie (movie, imageLink, imageThumbnail) {
-    // console.log(this._authorization)
+    const token = localStorage.getItem('token');
     return this._request (`${this._url}/movies`,
     {
       method: 'POST',
       headers: {
-        authorization: `Bearer ${this._authorization}`,
+        authorization: `Bearer ${token}`,
         'Content-type': 'application/json'
       },
       body: JSON.stringify({
@@ -46,23 +42,24 @@ class Api {
   }
 
   deleteMovie (movieId) {
+    const token = localStorage.getItem('token');
     return this._request (`${this._url}/movies/${movieId}`,
     {
       method: 'DELETE',
       headers: {
-        authorization: `Bearer ${this._authorization}`,
+        authorization: `Bearer ${token}`,
         'Content-type': 'application/json'
       }
     })
   }
 
   updateMyUser (email, name) {
-    console.log(this._authorization)
+    const token = localStorage.getItem('token');
     return this._request (`${this._url}/users/me`,
     {
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${this._authorization}`,
+        authorization: `Bearer ${token}`,
         'Content-type': 'application/json'
       },
       body: JSON.stringify({

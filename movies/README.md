@@ -4,7 +4,7 @@ Pull request https://github.com/ElyaTumanova/movies-explorer-frontend/pull/2
 
 Github repository https://github.com/ElyaTumanova/movies-explorer-frontend/tree/level-3
 
-IP <ipv4> 158.160.104.66
+IP <ipv4> 51.250.72.122
 
 Frontend https://tumanova.nomoredomainsrocks.ru
 

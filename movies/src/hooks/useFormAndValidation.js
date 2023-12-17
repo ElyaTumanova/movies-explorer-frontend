@@ -32,6 +32,8 @@ export function useFormAndValidation() {
       const profileForm = serializeForm(profileEditForm)
       const formName = profileForm.find((element) => element.name === 'name').value
       const formEmail = profileForm.find((element) => element.name === 'email').value
+      // console.log(formEmail)
+      // console.log(user.email)
       if (user.name === formName && user.email === formEmail) {
         setIsValid(false)
       }

@@ -5,35 +5,46 @@ import MoviesCardList from './MoviesCardList';
 import Preloader from './Preloader';
 import NoResult from './NoResult';
 
+import {screenWidthDesktop, screenWidthMobile,
+  moviesInRowDesktop, moviesInRowTablet, moviesInRowMobile,
+  moviesAmountDesktop, moviesAmountTablet, moviesAmountMobile} from '../utils/constants.js';
 
 
 function Movies({isShortsSearch, setIsShortsSearch, movies, 
   handleSearchSubmit, searchValue, setSearchValue, isLoading, 
   isNotFound, isSearchError, isNoQuiery, onSaveMovie, onDeleteMovie, checkSavedMovies}) {
 
-  // ФУНКЦИОНАЛЬНОСТЬ ДЛЯ ОПРЕДЕЛЕНИЯ КОЛ-ВА ВЫВОДИМЫХ КАРТОЧЕК НА СТРАНИЦЕ
   const [moviesInRow, setMoviesInRow] = useState(0);
   const [displayMoviesAmount, setDisplayMoviesAmount] = useState(0);
-
+  const [displayMovies, setDisplayMovies] = useState ([]);
+  const [isDisabled, setIsDisabled] = useState (false);
+    
+  useEffect (()=>{
+    setIsDisabled(false)
+    // console.log(`isLoading ${isLoading}`)
+    // console.log(`isDisabled ${isDisabled}`)
+  },[searchValue, movies])
+  
+  // ФУНКЦИОНАЛЬНОСТЬ ДЛЯ ОПРЕДЕЛЕНИЯ КОЛ-ВА ВЫВОДИМЫХ КАРТОЧЕК НА СТРАНИЦЕ
   function findMoviesInRow (screenWidth) {
     // console.log ('findMoviesInRow')
-    if (screenWidth > 1051) {
-      setMoviesInRow (3);
-    } else if (480 < screenWidth <= 1051) {
-      setMoviesInRow (2);
+    if (screenWidth > screenWidthDesktop) {
+      setMoviesInRow (moviesInRowDesktop);
+    } else if (screenWidthMobile < screenWidth <= screenWidthDesktop) {
+      setMoviesInRow (moviesInRowTablet);
     } else {
-      setMoviesInRow (1);
+      setMoviesInRow (moviesInRowMobile);
     }
   }
 
   function findDisplayMovies (screenWidth) {
     // console.log ('findMoviesRows')
-    if (screenWidth > 1051) {
-      setDisplayMoviesAmount (12);
-    } else if (480 < screenWidth <= 1051) {
-      setDisplayMoviesAmount (8);
+    if (screenWidth > screenWidthDesktop) {
+      setDisplayMoviesAmount (moviesAmountDesktop);
+    } else if (screenWidthMobile < screenWidth <= screenWidthDesktop) {
+      setDisplayMoviesAmount (moviesAmountTablet);
     } else {
-      setDisplayMoviesAmount (5);
+      setDisplayMoviesAmount (moviesAmountMobile);
     }
   }
 
@@ -60,7 +71,7 @@ function Movies({isShortsSearch, setIsShortsSearch, movies,
     }, 500);
   });
 
-  const  [displayMovies, setDisplayMovies] = useState ([]);
+  
 
   useEffect (()=> {
     setDisplayMovies(movies.slice(0, displayMoviesAmount))
@@ -88,7 +99,10 @@ function Movies({isShortsSearch, setIsShortsSearch, movies,
       searchValue = {searchValue}
       setSearchValue = {setSearchValue}
       handleChechboxClick = {handleChechboxClick}
-      checkbox = {checkbox}/>
+      checkbox = {checkbox}
+      isLoading={isLoading}
+      isDisabled={isDisabled}
+      setIsDisabled={setIsDisabled}/>
       <Preloader
       isLoading={isLoading}/>
       <NoResult

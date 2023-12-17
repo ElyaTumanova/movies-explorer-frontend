@@ -12,7 +12,9 @@ function UserMovies({isShortsSearch, setIsShortsSearch,
 
   const savedMovies = React.useContext(SavedMoviesContext);
   
-  const  [displayMovies, setDisplayMovies] = useState ([]);
+  const [displayMovies, setDisplayMovies] = useState ([]);
+  const [isDisabled, setIsDisabled] = useState (false);
+
 
   useEffect (()=>{
     getSavedMovies()
@@ -30,14 +32,16 @@ function UserMovies({isShortsSearch, setIsShortsSearch,
       setDisplayMovies (savedMovies)
     } else {
       setDisplayMovies (searchedMovies)
-    }
+    };
+    setIsDisabled (false);
   }, [savedMovies, searchedMovies])
   
   useEffect (()=>{
     setSearchValue ('');
     setIsNotFound (false);
     setIsNoQuiery (false);
-    setIsShortsSearch(false)
+    setIsShortsSearch(false);
+    setIsDisabled (false)
   }, [])  
 
   let checkbox = useRef ({isShortsSearch})
@@ -56,7 +60,9 @@ function UserMovies({isShortsSearch, setIsShortsSearch,
         searchValue = {searchValue}
         setSearchValue = {setSearchValue}
         handleChechboxClick = {handleChechboxClick}
-        checkbox = {checkbox}/>
+        checkbox = {checkbox}
+        isDisabled={isDisabled}
+        setIsDisabled={setIsDisabled}/>
     
         <NoResult
         isNotFound = {isNotFound}
